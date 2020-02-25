@@ -12,7 +12,7 @@ We are a team based in the http://www.comp.nus.edu.sg[School of Computing, Natio
 == Project Team
 
 === Mario Lorenzo
-image::mario7lorenzo.png[width="150", align="left"]
+image::mario7lorenzo.png[width="200", align="left"]
 {empty}[https://github.com/mario7lorenzo[github]] [<<mario7lorenzo#, portfolio>>]
 
 Role: Developer +
