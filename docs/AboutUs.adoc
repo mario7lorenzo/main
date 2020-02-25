@@ -21,7 +21,7 @@ Responsibilities:
 '''
 
 === Chin Synn Khee, Joash
-image::CornCobs.jpg[width="150", align="left"]
+image::CornCobs.png[width="200", align="left"]
 {empty}[http://github.com/CornCobs[github]] [<<CornCobs#, portfolio>>]
 
 Role: Developer +
@@ -30,7 +30,7 @@ Responsibilities:
 '''
 
 === Yan Boshen
-image::bscrow.jpg[width="150", align="left"]
+image::bscrow.png[width="200", align="left"]
 {empty}[http://github.com/bscrow[github]] [<<bscrow#, portfolio>>]
 
 Role: Developer +
@@ -39,7 +39,7 @@ Responsibilities:
 '''
 
 === Agnes Natasya
-image::agnesnatasya.png[width="150", align="left"]
+image::agnesnatasya.png[width="200", align="left"]
 {empty}[http://github.com/agnesnatasya[github]] [<<agnesnatasya#, portfolio>>]
 
 Role: Developer +
@@ -48,7 +48,7 @@ Responsibilities:
 '''
 
 === Ong Wei Cheng
-image::Weiichengg.png[width="150", align="left"]
+image::Weiichengg.png[width="200", align="left"]
 {empty}[http://github.com/Weiichengg[github]] [<<Weiichengg#, portfolio>>]
 
 Role: Developer +
