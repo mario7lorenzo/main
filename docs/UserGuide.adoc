@@ -479,15 +479,16 @@ e.g. `new interviewee - Jane Doe -a Doe`
 * `delete interviewee <interviewee>` +
 e.g. `delete interviewee Doe`
 * `list interviewee`
-* `new attribute<attributes>` +
+* `new attribute <attributes>` +
 e.g. `new attribute teamwork`
-* `update attribute<attributes>` +
+* `update attribute <attributes>` +
 e.g. `update attribute leadership`
-* `delete attribute<attributes>` +
+* `delete attribute <attributes>` +
 e.g. `delete attribute productivity`
-* `list attribute` - `add question <question>` +
+* `list attribute`
+* `add question <question>` +
 e.g. `add question What are your relevant experiences?`
-* `update question <interviewee number><updated question>` +
+* `update question <interviewee number> <updated question>` +
 e.g. `update question 1 What do you hope to accomplish in 5 years?`
 * `list question`
 * `delete question <question number>` +
