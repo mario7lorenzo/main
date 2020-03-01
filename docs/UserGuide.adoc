@@ -463,6 +463,7 @@ contains the data of your previous HireLah! folder.
 == Command Summary
 
 *Start Session*
+
 * `view session` +
 * `delete session <session>` +
 e.g. `delete session CEOInterview`
@@ -472,6 +473,7 @@ e.g. `start session CEOInterview`
 e.g. `new session CEOInterview`
 
 *Initialization Phase*
+
 * `new interviewee <fullname> [-a <alias>]` +
 e.g. `new interviewee - Jane Doe -a Doe`
 * `delete interviewee <interviewee>` +
@@ -492,6 +494,7 @@ e.g. `update question 1 What do you hope to accomplish in 5 years?`
 e.g. `delete question 1`
 
 *Interviewing Phase*
+
 * Start: `start interview <name>` +
 e.g. `start interview Jane Doe`
 * View Questions: `view questions`
