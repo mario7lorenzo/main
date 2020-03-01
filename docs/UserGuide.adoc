@@ -12,9 +12,9 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level3
+:repoURL: https://github.com/AY1920S2-CS2103-W15-2/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `AY1920S2-W15-2`      Since: `Feb 2020`
 
 == Introduction
 
@@ -24,13 +24,12 @@ included customised features in our desktop apps to help interviewers to
 manage interviews.
 
 == Quick Start
-.  Ensure you have Java 1 or above installed in your Computer.
+.  Ensure you have Java 11 or above installed in your Computer.
 .  Download the latest `HireLah.jar` link:{repoURL}/releases[here].
 .  Copy the file to the folder you want to use as the home folder for your HireLah!.
 .  Double-click the file to start the app. The GUI should appear in a few seconds.
-+
+
 image::Ui.png[width="790"]
-+
 
 == Features
 
@@ -371,7 +370,7 @@ interview time.
 In addition to viewing the remarks, you can also playback the interview
 audio record by specifying the –audio flag.
 
-===== 2.4.2.1. Navigating by Question Number
+====== Navigating by Question Number
 
 Displays all the remarks made while the current interviewee was
 answering the given question, or plays back the audio from that period
@@ -397,7 +396,7 @@ Question 4
 27.59 - Was uncomfortable to share the reasons
 ....
 
-===== 2.4.2.2. Navigating by Timestamp
+===== Navigating by Timestamp
 
 Scrolls the list of remarks to the given time, or plays back the audio
 from that moment.
@@ -416,7 +415,7 @@ at <time> [--audio]
 
 _Action_: Plays audio starting at 30.00
 
-===== 2.4.2.3. Stopping the Audio
+===== Stopping the Audio
 
 Stops an ongoing audio playback.
 
