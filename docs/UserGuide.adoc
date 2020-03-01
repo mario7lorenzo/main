@@ -371,7 +371,7 @@ interview time.
 In addition to viewing the remarks, you can also playback the interview
 audio record by specifying the –audio flag.
 
-===== 3.4.2.1. Navigating by Question Number
+===== 2.4.2.1. Navigating by Question Number
 
 Displays all the remarks made while the current interviewee was
 answering the given question, or plays back the audio from that period
@@ -397,7 +397,7 @@ Question 4
 27.59 - Was uncomfortable to share the reasons
 ....
 
-===== 3.4.2.2. Navigating by Timestamp
+===== 2.4.2.2. Navigating by Timestamp
 
 Scrolls the list of remarks to the given time, or plays back the audio
 from that moment.
@@ -416,7 +416,7 @@ at <time> [--audio]
 
 _Action_: Plays audio starting at 30.00
 
-===== 3.4.2.3. Stopping the Audio
+===== 2.4.2.3. Stopping the Audio
 
 Stops an ongoing audio playback.
 
