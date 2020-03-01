@@ -24,11 +24,13 @@ included customised features in our desktop apps to help interviewers to
 manage interviews.
 
 == Quick Start
-
-Ensure you have Java 11 or above installed in your Computer. Download
-the latest HireLah.jar somewhere. Copy the file to the folder you want
-to use as the home folder for your HireLah!. Double-click the file to
-start the app. The GUI should appear in a few seconds.
+.  Ensure you have Java 1 or above installed in your Computer.
+.  Download the latest `HireLah.jar` link:{repoURL}/releases[here].
+.  Copy the file to the folder you want to use as the home folder for your HireLah!.
+.  Double-click the file to start the app. The GUI should appear in a few seconds.
++
+image::Ui.png[width="790"]
++
 
 == Features
 
@@ -55,7 +57,7 @@ new session CEOInterview
 ....
 
 _Action:_ views existing interview sessions, followed by creating and
-starting a new interview session named 'CEOInterview'
+starting a new interview session named "CEOInterview"
 
 _Output:_
 
@@ -107,7 +109,7 @@ The following interviewee has been deleted:
   1. Jane Doe (alias: Doe)
 ....
 
-==== 3.1.2 Add, Update and Delete Attributes
+==== Add, Update and Delete Attributes
 
 *Command*
 
@@ -218,7 +220,7 @@ start interview <name>
 _Action:_ Initializes an interview session with Jane. Shows the uploaded
 CV (if any), and the list of interview questions in separate windows
 
-==== 3.2.2 View Interview Questions
+==== View Interview Questions
 
 You can view the interview questions that you have set up for this
 interview session, to be asked to the interviewees.
@@ -369,7 +371,7 @@ interview time.
 In addition to viewing the remarks, you can also playback the interview
 audio record by specifying the –audio flag.
 
-===== 3.4.2.1 Navigating by Question Number
+===== 3.4.2.1. Navigating by Question Number
 
 Displays all the remarks made while the current interviewee was
 answering the given question, or plays back the audio from that period
@@ -395,7 +397,7 @@ Question 4
 27.59 - Was uncomfortable to share the reasons
 ....
 
-===== 3.4.2.2 Navigating by Timestamp
+===== 3.4.2.2. Navigating by Timestamp
 
 Scrolls the list of remarks to the given time, or plays back the audio
 from that moment.
@@ -414,7 +416,7 @@ at <time> [--audio]
 
 _Action_: Plays audio starting at 30.00
 
-===== 3.4.2.3 Stopping the Audio
+===== 3.4.2.3. Stopping the Audio
 
 Stops an ongoing audio playback.
 
@@ -424,7 +426,7 @@ Stops an ongoing audio playback.
 stop audio
 ....
 
-==== 3.3.3 Find Best Candidates
+==== Find Best Candidates
 
 After interviewing all the candidates, you can find the top n candidates
 based on either a particular attribute, the average of all the
@@ -455,49 +457,69 @@ teamwork?
 
 Q: How do I transfer my data to another Computer? +
 A: Install the app in
-the other computer and overwrite the /data folder with /data folder that
+the other computer and overwrite the `/data` folder with `/data` folder that
 contains the data of your previous HireLah! folder.
 
 == Command Summary
 
-*Start Session* - `view session` +
-- `delete session <session>`e.g. delete session CEOInterview +
-- `start session <session>`e.g. start session CEOInterview +
-- `new session <session>`e.g. new session CEOInterview
+*Start Session*
+* `view session` +
+* `delete session <session>` +
+e.g. `delete session CEOInterview`
+* `start session <session>` +
+e.g. `start session CEOInterview`
+* `new session <session>` +
+e.g. `new session CEOInterview`
 
-*Initialization Phase* -
-`new interviewee <fullname> [-a <alias>]`e.g. new interviewee - Jane Doe
--a Doe - `delete interviewee <interviewee>`e.g. delete interviewee Doe -
-`list interviewee` - `new attribute<attributes>` e.g. new attribute
-teamwork - `update attribute<attributes>` e.g. update attribute
-leadership - `delete attribute<attributes>` e.g. delete attribute
-productivity - `list attribute` - `add question <question>` e.g. add
-question What are your relevant experiences? -
-`update question <interviewee number><updated question>` e.g. update
-question 1 What do you hope to accomplish in 5 years? - `list question`
-- `delete question <question number>` e.g. delete question 1
+*Initialization Phase*
+* `new interviewee <fullname> [-a <alias>]` +
+e.g. `new interviewee - Jane Doe -a Doe`
+* `delete interviewee <interviewee>` +
+e.g. `delete interviewee Doe`
+* `list interviewee`
+* `new attribute<attributes>` +
+e.g. `new attribute teamwork`
+* `update attribute<attributes>` +
+e.g. `update attribute leadership`
+* `delete attribute<attributes>` +
+e.g. `delete attribute productivity`
+* `list attribute` - `add question <question>` +
+e.g. `add question What are your relevant experiences?`
+* `update question <interviewee number><updated question>` +
+e.g. `update question 1 What do you hope to accomplish in 5 years?`
+* `list question`
+* `delete question <question number>` +
+e.g. `delete question 1`
 
-*Interviewing Phase* - Start: `start interview <name>`e.g. start
-interview Jane Doe - View Questions: `view questions` - Add Remarks:
-`remarks`e.g.This guy is good at bluffing - Start a Question:
-`:start q<no_of_question>`e.g. :start q1 - End a question:
-`:end q<no_of_question>` e.g. :end q1 - Score an attribute:
-`:<attribute> <score>`e.g. :Agility 10 - End: end
+*Interviewing Phase*
+* Start: `start interview <name>` +
+e.g. `start interview Jane Doe`
+* View Questions: `view questions`
+* Add Remarks: `remarks` +
+e.g. `This guy is good at bluffing`
+* Start a Question: `:start q<no_of_question>` +
+e.g. `:start q1`
+* End a question: `:end q<no_of_question>` +
+e.g. `:end q1`
+* Score an attribute: `:<attribute> <score>` +
+e.g. `:Agility 10`
+* End: `end`
 
 *Decision Phase*
 
-* Open an interviewee report: `open <interviewee>`e.g. open Jane Doe
-* Close an interviewee report: `close <interviewee>`e.g. close Jane Doe
-* Navigate to answer of interviewee:
-`q<question number> [--audio]`e.g. q4
-* Navigate to a time of interviewee: `at <time> [--audio]`e.g. at 30.00
-–audio
+* Open an interviewee report: `open <interviewee>` +
+e.g. `open Jane Doe`
+* Close an interviewee report: `close <interviewee>` +
+e.g. `close Jane Doe`
+* Navigate to answer of interviewee: `q<question number> [--audio]` +
+e.g. `q4`
+* Navigate to a time of interviewee: `at <time> [--audio]` +
+e.g. `at 30.00 –audio`
 * Stops audio playing: `stop audio`
-* Create a new weightage: `new weightage <weightage_name>`e.g. new
-weightage extreme_intelligent
-* Find the Best N candidates based on average attribute:
-`best <no_of_candidates>`
-* Find the Best N candidates based on a particular attribute:
-`best <no_of_candidates> -p <attribute>`e.g. best 3 strength
-* Find the Best N candidates based on a weighted attribute:
-`best <no_of_candidates> -w <weightage>`e.g. best 5 -w weightage1
+* Create a new weightage: `new weightage <weightage_name>` +
+e.g. `new weightage extreme_intelligent`
+* Find the Best N candidates based on average attribute: `best <no_of_candidates>`
+* Find the Best N candidates based on a particular attribute: `best <no_of_candidates> -p <attribute>` +
+e.g. `best 3 strength`
+* Find the Best N candidates based on a weighted attribute: `best <no_of_candidates> -w <weightage>` +
+e.g. `best 5 -w weightage1`
