@@ -1,4 +1,4 @@
-= AddressBook Level 3 - Developer Guide
+= HireLah! - Developer Guide
 :site-section: DeveloperGuide
 :toc:
 :toc-title:
@@ -12,9 +12,9 @@ ifdef::env-github[]
 :note-caption: :information_source:
 :warning-caption: :warning:
 endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level3/tree/master
+:repoURL: https://github.com/AY1920S2-CS2103-W15-2/main
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+By: `AY1920S2-CS2103-W15-2`      Since: `Feb 2020`      Licence: `MIT`
 
 == Setting up
 
@@ -295,20 +295,66 @@ Priorities: High (must have) - `* * \*`, Medium (nice to have) - `* \*`, Low (un
 [width="59%",cols="22%,<23%,<25%,<30%",options="header",]
 |=======================================================================
 |Priority |As a ... |I want to ... |So that I can...
-|`* * *` |new user |see usage instructions |refer to instructions when I forget how to use the App
+|`* * *` |New Interviewer |See usage instructions | Learn to use HireLah!
 
-|`* * *` |user |add a new person |
+|`* * *` |Interviewer |Create a new interview session | Initialise the interviewee, their details, attributes and
+questions specific to this interview session.
 
-|`* * *` |user |delete a person |remove entries that I no longer need
+|`* * *` |Interviewer |Add a new interviewee to an interview session | Keep track of interviewees applying for a job opening
 
-|`* * *` |user |find a person by name |locate details of persons without having to go through the entire list
+|`* * *` |Interviewer |View the list of interviewees and their interview status|Remember their names and interview those who have not been interviewed
 
-|`* *` |user |hide <<private-contact-detail,private contact details>> by default |minimize chance of someone else seeing them by accident
+|`* * *` |Interviewer |Delete an interviewee from an interview session|Remove interviewees who withdrew their job application
 
-|`*` |user with many persons in the address book |sort persons by name |locate a person easily
+|`* *` |Interviewer |Update the information of interviewees |Ensure that I have the most up to date information about the interviewees
+
+|`* * *` |Interviewer |Add a new `attribute`|Customize the interview session rubrics
+
+|`* * *` |Interviewer |Delete any irrelevant `attribute`|Update the interview session's rubrics as needed
+
+|`* *` |Busy Interviewer |Refer to my interviewees by both their interview ID as well as their name / alias |Do not have
+to remember the full name / ID of each interviewee
+
+|`* * *` |Interviewer |Finalise the attributes and questions for an interview session|Avoid changing the rubrics for the interview session between interviews
+
+|`* * *` |Interviewer |See the list of attributes and questions that are preset before the interview session|Refer back
+to the list of attributes and questions and assess all interviewees according to these exact parameters.
+
+|`* * *` |Interviewer |Record the remarks of my interviewees during the interview session|Recall details that happened during the interview
+
+|`* * *` |Interviewer |Group the remarks as an answer of a particular preset question|Assess and review the interviewee’s
+answers to a particular question
+
+|`* *` |Interviewer |Have an audio recording for every interview session |Refer back to it to minimize missing details
+
+|`* * *` |Interviewer |Want to toggle between different phrases of the interview |Make it more convenient during the interview session
+
+|`* * *` |Interviewer |navigate from the interviewees list to the answers of 1/2/3 particular interviewee to a specific questions
+|recall the answer of the interviewee to a certain question.
+
+|`* *` |Interviewer |Find the best few interviewees based on the mean score of all attributes |Narrow down the number of interviewees
+
+|`* * *` |Interviewer |Find the best few interviewees based on an attribute |Narrow down the number of interviewees
+
+|`* * *` |Interviewer |Navigate to 1/2/3 interviewee's scores of attributes|See the whole quality of attributes of the interviewee
+
+|`* * *` |Interviewer |Navigate from the interviewees list to play audio of a particular recording at a certain time|
+Recall what the interviewee said at a certain time
+
+|`* * *` |Interviewer |Navigate to a certain keyword from my remarks of 1/2/3 particular person|Recall my remarks about a certain topic
+
+|`* * *` |Interviewer |Navigate to a certain timestamp of a particular interviewee|Recall my remarks and the interviewee's
+audio recording around that time
+
+|`* * *` |Interviewer |Visualise the score of attributes of all interviewees|To compare easily
+
+|`* * *` |Interviewer |Export the full report of each interviewee|A record for each interview
+
+|`* *` |Interviewer |App to be password protected |Protect sensitive information from prying eyes
+
+|`* *` |Experienced Interviewer |Only use the keyboard |Record down the particulars of the interviewee faster
+
 |=======================================================================
-
-_{More to be added}_
 
 [appendix]
 == Use Cases
@@ -347,10 +393,14 @@ _{More to be added}_
 == Non Functional Requirements
 
 .  Should work on any <<mainstream-os,mainstream OS>> as long as it has Java `11` or above installed.
-.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-_{More to be added}_
+.  Should be able to hold up to 1000 interviewees without a noticeable sluggishness in performance for typical usage.
+.  Each command word should not be longer than 6 characters so that interviewer with above-average typing speed for
+regular English text should be able to accomplish most of the tasks faster using commands than using the mouse.
+.  The application should be easy to use even for interviewers who have never used command-line programs before.
+.  The UI design of the application should be intuitive to interviewers to navigate between the different phases of the application.
+.  The application should not be larger than 100Mb.
+.  The application should save data after every command and not require interviews to save it manually.
+.  Our code should allow other developers to add new features in the application easily.
 
 [appendix]
 == Glossary
