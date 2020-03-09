@@ -359,17 +359,162 @@ audio recording around that time
 [appendix]
 == Use Cases
 
-(For all use cases below, the *System* is the `AddressBook` and the *Actor* is the `user`, unless specified otherwise)
+(For all use cases below, the *System* is the `HireLah!` and the *Actor* is the `User`, unless specified otherwise)
 
 [discrete]
-=== Use case: Delete person
+=== Use case: UC01 - Create new Session
 
 *MSS*
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1. User chooses to create a new Interview Session
+2. User provides a name for the Session (eg. CEO Interview)
+3. HireLah! creates the new Session and saves it
+4. HireLah! automatically pass:[<u>opens the Session (UC02)</u>]
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. User provides an invalid name.
++
+[none]
+** 2a1. HireLah! shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: UC02 - Open existing Session
+
+*MSS*
+
+1. User chooses to open a previous Interview Session
+2. User provides the name of previous session (eg. CEO Interview)
+3. HireLah! restores data from the session from memory
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. No such previous session exists.
++
+[none]
+** 2a1. HireLah! shows an error message.
++
+Use case resumes at step 2.
+
+[discrete]
+=== Use case: UC03 - List Interviewee
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User requests a list of interviewees.
+2. HireLah! provides the list of interviewees with their IDs and aliases.
+Use case ends.
+
+[discrete]
+=== Use case: UC04 - Add Interviewee
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User chooses to create a new Interviewee.
+2. User provides a name, and an alias (optional) for the Interviewee.
+3. HireLah! creates the new Interviewee and saves it.
++
+Use case ends.
+
+[discrete]
+=== Use case: UC05 - Delete Interviewee
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User decides which Interviewee that wants to be deleted from the list.
+2. User requests to pass:[<u>list the interviewees (UC03)</u>] to view their details.
+3. HireLah! displays the list of interviewees.
+4. User provides either the full name, the alias, or the ID.
+5. HireLah! deletes the interviewee with the following details provided.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 3a. The list is empty.
++
+Use case ends.
+[none]
+* 4a. There is no interviewee with the given details.
++
+[none]
+** 4a1. HireLah! shows an error message.
++
+Use case resumes at step 3.
+
+[discrete]
+=== Use case: UC06 - List Attribute
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User requests to list all the saved attributes.
+2. HireLah! displays all the attributes that are stored.
++
+Use case ends.
+
+[discrete]
+=== Use case: UC07 - Add Attribute
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User chooses a name for the attribute.
+2. User creates an attribute with the chosen name.
+3. HireLah! adds the attribute with a given name to the list.
++
+Use case ends.
+
+*Extensions*
+[none]
+* 3a. There is already an attribute with the identical name
++
+[none]
+** 3a1. HireLah! shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: UC08 - Delete Attribute
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User requests to pass:[<u>list all the attributes stored (UC06)</u>].
+2. HireLah! displays all the attributes stored.
+3. User enters a prefix of the attribute that wants to be deleted.
+4. HireLah! removes the attribute with the given prefix from the list.
+
 +
 Use case ends.
 
@@ -379,15 +524,453 @@ Use case ends.
 * 2a. The list is empty.
 +
 Use case ends.
-
-* 3a. The given index is invalid.
+[none]
+* 3a. There is no attribute with the given prefix.
 +
 [none]
-** 3a1. AddressBook shows an error message.
+** 3a1. HireLah! shows an error message.
++
+Use case resumes at step 3.
+[none]
+* 3b. There are multiple attributes with the same given prefix.
++
+[none]
+** 3b1. HireLah! shows an error message.
++
+Use case resumes at step 3.
+
+[discrete]
+=== Use case: UC09 - Update Attribute
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User requests to pass:[<u>list all the attributes stored (UC06)</u>].
+2. HireLah! displays all the attributes stored.
+3. User enters a prefix of the attribute and the new name of the attribute.
+4. HireLah! updates the attribute with the given prefix with the entered name.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+[none]
+* 3a. There is no attribute with the given prefix.
++
+[none]
+** 3a1. HireLah! shows an error message.
++
+Use case resumes at step 3.
+[none]
+* 3b. There are multiple attributes with the same given prefix.
++
+[none]
+** 3b1. HireLah! shows an error message.
++
+Use case resumes at step 3.
+
+[discrete]
+=== Use case: UC10 - List Question
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User requests to list all the saved questions.
+2. HireLah! displays all the questions that are stored.
++
+Use case ends.
+
+[discrete]
+=== Use case: UC11 - Add Question
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User chooses a description of the question..
+2. User creates a question with the given description.
+3. HireLah! adds the question with the given to the list.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 3a. There is already a question with the identical description.
++
+[none]
+** 3a1. HireLah! shows an error message.
++
+Use case resumes at step 1.
+
+[discrete]
+=== Use case: UC12 - Delete Question
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User requests to pass:[<u>list all the questions stored (UC10)</u>].
+2. HireLah! displays all the questions stored.
+3. User enters the index of the question that wants to be deleted.
+4. HireLah! removes the question with the given index from the list.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+[none]
+* 3a. The index given is not within the valid range.
++
+[none]
+** 3a1. HireLah! shows an error message.
 +
 Use case resumes at step 2.
 
-_{More to be added}_
+[discrete]
+=== Use case: UC13 - Update Question
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User requests to pass:[<u>list all the questions stored (UC10)</u>].
+2. HireLah! displays all the questions stored.
+3. User enters an index of the question and the updated description.
+4. HireLah! updates the description of the question with the given index.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+[none]
+* 3a. The index given is not within the valid range.
++
+[none]
+** 3a1. HireLah! shows an error message.
++
+Use case resumes at step 2.
+
+[discrete]
+=== Use case: UC14 - Finalize Questions and Attributes
+
+*Precondition*
+
+1. User has opened a session
+
+*Guarantees*
+
+1. Attribute list and Question list cannot be changed after finalizing
+
+*MSS*
+
+1. User chooses to finalize the current list of questions and attributes
+Use case ends
+
+[discrete]
+=== Use case: UC15 - Interview an Interviewee
+
+*Precondition*
+
+1. User has pass:[<u>finalized questions and attributes for the session (UC14)</u>].
+
+*MSS*
+
+1. User gives name or alias or id of Interviewee to interview
+2. HireLah! displays the interview questions
+3. User writes remarks while conducting the interview
+4. HireLah! saves the remark and the time during the interview when the remark was made
+5. User pass:[<u>records answers to the interview questions (UC16)</u>]
+6. User pass:[<u>scores interviewee on each attribute (UC17)</u>]
+7. User chooses to end the interview
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Name, alias or id does not refer to any interviewee.
++
+[none]
+** 1a1. HireLah! shows an error message.
++
+Use case resumes at step 1.
+[none]
+* 1b. Interviewee specified has already been interviewed.
++
+[none]
+** 1b1. HireLah! shows an error message.
++
+Use case ends.
+[none]
+* 7a. User has not scored the interviewee in all attributes
++
+[none]
+** 7a1. HireLah! shows which attributes have not been scored
++
+Use case resumes from step 6.
+
+[discrete]
+=== Use case: UC16 - Record Question Answer
+
+*Precondition*
+
+1. User is pass:[<u>interviewing an interviewee (UC15)</u>].
+
+*MSS*
+
+1. User indicates question to record answers for
+2. User takes notes of the answer to the question
+3. HireLah! saves the remark and the time during the interview when the remark was made
+4. User indicates the answer is finished
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Question number is invalid (too large, or less than 1)
++
+[none]
+** 1a1. HireLah! shows an error message.
++
+Use case ends.
+
+[discrete]
+=== Use case: UC17 - Score Interviewee
+
+*Precondition*
+
+1. User is pass:[<u>interviewing an interviewee (UC15)</u>].
+
+*MSS*
+
+1. User indicates attribute to score
+2. User indicates score to give
+3. HireLah! overwrites any previous score given with the new score
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. Attribute does not exist.
++
+[none]
+** 1a1. HireLah! shows an error message.
++
+Use case ends.
+[none]
+* 2a. Score given is not a number
++
+[none]
+** 2a1. HireLah! shows an error message.
++
+Use case resumes from step 1.
+
+[discrete]
+=== Use case: UC18 - Working with an Interviewee Report
+
+*Precondition*
+
+1. User has pass:[<u>stopped an interview session(UC15)</u>] with any interviewee.
+
+*MSS*
+
+1. User chooses the interviewee that wants to be examined.
+2. User opens the interviewee transcript, containing the remarks that are added during the interview.
+3. User may navigate between questions and time (UC19) to view their remarks.
+4. User closes the interviewee report when he/she is done.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. User pass:[<u>has not started an interview (UC15)</u>] with this interviewee.
++
+[none]
+** 1a1. HireLah! shows an error message.
++
+Use case ends.
+[none]
+* 1b. There is no interviewee with a given details (alias, ID, or fullname).
++
+[none]
+** 1b1. HireLah! shows an error message.
++
+Use case resumes from step 1.
+
+[discrete]
+=== Use case: UC19 - Navigating through the Interview report
+
+*Precondition*
+
+1. User is pass:[<u>viewing an interview report (UC18)</u>].
+
+*MSS*
+
+1. User provides the time for which he/she wishes to see the remarks made during that period of the interview
+2. HireLah! scrolls the interview report to the remark made at the closest time
++
+Use case ends.
+
+=== Use case: UC20 - Choose Best Interviewees
+
+*Precondition*
+
+1. User has pass:[<u>interviewed at least 1 interviewee (UC15)</u>].
+
+*MSS*
+
+1. User indicates the metric (average, best by single attribute, or user-defined weightage) to sort interviewees by
+2. User indicates the number of top interviewees to show
+3. HireLah! displays the sorted and filtered list of top candidates
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. The indicated metric does not exist
++
+[none]
+** 1a1. HireLah! shows an error message.
++
+Use case resumes from step 1.
+[none]
+* 2a. The indicated number of interviewees to show is invalid
++
+[none]
+** 2a1. HireLah! sorts and displays all interviewed interviewees.
++
+Use case ends.
+
+[discrete]
+=== Use case: UC21 - List Metric
+
+*Precondition*
+
+1. User has opened a session
+
+*MSS*
+
+1. User requests to list all the saved metrics.
+2. HireLah! displays all the metrics that are stored.
++
+Use case ends.
+
+[discrete]
+=== Use case: UC22 - Add Metric
+
+*MSS*
+
+1. User chooses the name of the metric and the weightage of each attribute
+2. HireLah! adds the metric to the list.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 1a. If there is a missing attribute that has not given a weightage yet.
++
+[none]
+** 1a1. HireLah! shows an error message.
++
+Use case resumes from step 1.
+
+[discrete]
+=== Use case: UC23 - Delete Metric
+
+*MSS*
+
+1. User requests to pass:[<u>list all the metrics stored (UC21)</u>].
+2. HireLah! displays all the metrics stored.
+3. User enters the prefix of the metric that wants to be deleted.
+4. HireLah! deletes the metric with the given prefix.
+
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+[none]
+* 3a. There is no metric with the given prefix
++
+[none]
+** 3a1. HireLah! shows an error message.
++
+Use case ends.
+[none]
+* 3b. There are multiple metrics with the given prefix
++
+[none]
+** 3b1. HireLah! shows an error message.
++
+Use case ends.
+
+[discrete]
+=== Use case: UC23 - Update Metric
+
+*MSS*
+
+1. User requests to pass:[<u>list all the metrics stored (UC21)</u>].
+2. HireLah! displays all the metrics stored.
+3. User enters the prefix of the metric that wants to be updated as well as the name of the new metric with the given weightage.
+4. HireLah! updates the metric with the given prefix.
++
+Use case ends.
+
+*Extensions*
+
+[none]
+* 2a. The list is empty.
++
+Use case ends.
+[none]
+* 3a. There is no metric with the given prefix
++
+[none]
+** 3a1. HireLah! shows an error message.
++
+Use case ends.
+[none]
+* 3b. There are multiple metrics with the given prefix
++
+[none]
+** 3b1. HireLah! shows an error message.
++
+Use case ends.
+
 
 [appendix]
 == Non Functional Requirements
