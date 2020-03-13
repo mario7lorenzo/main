@@ -11,7 +11,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
 /*
- * NormalParser
+ * InterviewParser
  *
  * CS2103 AY19/20 Semester 2
  * Team Project
@@ -22,12 +22,12 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
  */
 
 /**
- * NormalParser parses the input entered by the client
+ * InterviewParser parses the input entered by the client
  * when HireLah! is not in interviewing mode.
  */
 
 
-public class NormalParser {
+public class InterviewParser {
     /**
      * Used for initial separation of command word and args.
      */
