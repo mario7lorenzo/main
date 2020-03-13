@@ -34,7 +34,7 @@ public class InterviewParser {
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
     private static final HashMap<String, CommandSupplier> suppliers = new HashMap<>() {
         {
-            // fill your commands here!
+            // fill your commands here! e.g. put("add", (x) -> new AddCommand(x[0]));
         }
     };
 
