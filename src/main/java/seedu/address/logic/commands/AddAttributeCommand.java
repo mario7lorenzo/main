@@ -18,13 +18,12 @@ public class AddAttributeCommand extends Command {
             + "Example: new " + COMMAND_WORD + " leadership";
 
 
-    private final Attribute toAdd;
+    private final String toAdd;
 
     /**
      * Creates an AddAttributeCommand to add the specified {@code Attribute}
      */
-    public AddAttributeCommand(Attribute attribute) {
-        requireNonNull(attribute);
+    public AddAttributeCommand(String attribute) {
         toAdd = attribute;
     }
 
@@ -32,11 +31,12 @@ public class AddAttributeCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         ObservableList<Attribute> attributes = model.getAttributeList();
-        if (attributes.contains(toAdd)) {
+        Attribute attribute = new Attribute(toAdd);
+        if (attributes.contains(attribute)) {
             throw new CommandException(MESSAGE_DUPLICATE_ATTRIBUTE);
         }
 
-        attributes.add(toAdd);
+        attributes.add(attribute);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

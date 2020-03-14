@@ -18,13 +18,12 @@ public static final String MESSAGE_DUPLICATE_QUESTION = "The question already ex
             + "Example: new " + COMMAND_WORD + " what is this question?";
 
 
-    private final Question toAdd;
+    private final String toAdd;
 
     /**
      * Creates an AddQuestionCommand to add the specified {@code Question}
      */
-    public AddQuestionCommand(Question question) {
-        requireNonNull(question);
+    public AddQuestionCommand(String question) {
         toAdd = question;
     }
 
@@ -32,11 +31,12 @@ public static final String MESSAGE_DUPLICATE_QUESTION = "The question already ex
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         ObservableList<Question> questions = model.getQuestionList();
-        if (questions.contains(toAdd)) {
+        Question question = new Question(toAdd);
+        if (questions.contains(question)) {
             throw new CommandException(MESSAGE_DUPLICATE_QUESTION);
         }
 
-        questions.add(toAdd);
+        questions.add(question);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

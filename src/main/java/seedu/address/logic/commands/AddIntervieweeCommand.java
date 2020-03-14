@@ -4,16 +4,19 @@ import static java.util.Objects.requireNonNull;
 
 import javafx.collections.ObservableList;
 
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.hirelah.Attribute;
 import seedu.address.model.hirelah.Interviewee;
+import seedu.address.model.hirelah.IntervieweeList;
+import seedu.address.model.hirelah.exceptions.IllegalActionException;
 
 public class AddIntervieweeCommand extends Command {
     public static final String PREFIX_ALIAS = "-a";
 
     public static final String COMMAND_WORD = "interviewee";
-    public static final String MESSAGE_DUPLICATE_INTERVIEWEE = "The interviewee already exists.";
+    public static final String MESSAGE_DUPLICATE_IDENTIFIER = "There is already an interviewee with the given identifier.";
     public static final String MESSAGE_SUCCESS = "New interviewee added: %1$s";
     public static final String MESSAGE_USAGE = "new " + COMMAND_WORD + ": Adds an interviewee to the Interviewee list. "
             + "Parameters: "
@@ -23,32 +26,49 @@ public class AddIntervieweeCommand extends Command {
             + "Jane Doe "
             + PREFIX_ALIAS + " Doe";
 
-    private final Interviewee toAdd;
+    public static final String EMPTY_STRING = "";
+    private final String fullname;
+    private final String alias;
 
     /**
      * Creates an AddIntervieweeCommand to add the specified {@code Interviewee}
      */
-    public AddIntervieweeCommand(Interviewee interviewee) {
-        requireNonNull(interviewee);
-        toAdd = interviewee;
+    public AddIntervieweeCommand(String fullname, String... optionalAlias) {
+        this.fullname = fullname;
+        if (optionalAlias.length == 0) {
+            this.alias = optionalAlias[0];
+        } else {
+            this.alias = "";
+        }
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        ObservableList<Interviewee> interviewees = model.getFilteredIntervieweeList();
-        if (interviewees.contains(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_INTERVIEWEE);
+        IntervieweeList interviewees = model.getIntervieweeList();
+
+        try {
+            if (isEmptyAlias()) {
+                interviewees.addInterviewee(fullname);
+            } else {
+                interviewees.addIntervieweeWithAlias(fullname, alias);
+            }
+        } catch (IllegalValueException | IllegalActionException e) {
+            throw new CommandException(e.getMessage());
         }
 
-        interviewees.add(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, fullname));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddIntervieweeCommand // instanceof handles nulls
-                && toAdd.equals(((AddIntervieweeCommand) other).toAdd));
+                && fullname.equals(((AddIntervieweeCommand) other).fullname)
+                && alias.equals(((AddIntervieweeCommand) other).alias));
+    }
+
+    private boolean isEmptyAlias() {
+        return this.alias.equals(EMPTY_STRING);
     }
 }
