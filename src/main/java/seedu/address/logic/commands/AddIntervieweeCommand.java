@@ -13,7 +13,7 @@ public class AddIntervieweeCommand extends Command {
     public static final String PREFIX_ALIAS = "-a";
 
     public static final String COMMAND_WORD = "interviewee";
-    public static final String MESSAGE_DUPLICATE_ATTRIBUTE = "The interviewee already exists.";
+    public static final String MESSAGE_DUPLICATE_INTERVIEWEE = "The interviewee already exists.";
     public static final String MESSAGE_SUCCESS = "New interviewee added: %1$s";
     public static final String MESSAGE_USAGE = "new " + COMMAND_WORD + ": Adds an interviewee to the Interviewee list. "
             + "Parameters: "
@@ -38,7 +38,7 @@ public class AddIntervieweeCommand extends Command {
         requireNonNull(model);
         ObservableList<Interviewee> interviewees = model.getFilteredIntervieweeList();
         if (interviewees.contains(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ATTRIBUTE);
+            throw new CommandException(MESSAGE_DUPLICATE_INTERVIEWEE);
         }
 
         interviewees.add(toAdd);

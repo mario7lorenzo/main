@@ -10,7 +10,7 @@ import seedu.address.model.hirelah.Question;
 
 public class AddQuestionCommand extends Command {
     public static final String COMMAND_WORD = "question";
-    public static final String MESSAGE_DUPLICATE_ATTRIBUTE = "The question already exists.";
+public static final String MESSAGE_DUPLICATE_QUESTION = "The question already exists.";
     public static final String MESSAGE_SUCCESS = "New question added: %1$s";
     public static final String MESSAGE_USAGE = "new " + COMMAND_WORD + ": Adds an question to the Question list. "
             + "Parameters: "
@@ -21,7 +21,7 @@ public class AddQuestionCommand extends Command {
     private final Question toAdd;
 
     /**
-     * Creates an AddAttributeCommand to add the specified {@code Attribute}
+     * Creates an AddQuestionCommand to add the specified {@code Question}
      */
     public AddQuestionCommand(Question question) {
         requireNonNull(question);
@@ -33,7 +33,7 @@ public class AddQuestionCommand extends Command {
         requireNonNull(model);
         ObservableList<Question> questions = model.getQuestionList();
         if (questions.contains(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_ATTRIBUTE);
+            throw new CommandException(MESSAGE_DUPLICATE_QUESTION);
         }
 
         questions.add(toAdd);
