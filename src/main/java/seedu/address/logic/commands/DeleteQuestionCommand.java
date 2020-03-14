@@ -16,7 +16,7 @@ public class DeleteQuestionCommand extends Command {
             + "Parameters: INDEX\n"
             + "Example: delete " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_QUESTION_SUCCESS = "Deleted Attribute: %1$s";
+    public static final String MESSAGE_DELETE_QUESTION_SUCCESS = "Deleted Question: %1$s";
     public static final String MESSAGE_DELETE_INDEX_OUT_OF_BOUND = "The index is out of bound: %s";
     public static final String MESSAGE_DELETE_INDEX_NOT_A_NUMBER = "The index is not a number: %s";
 
