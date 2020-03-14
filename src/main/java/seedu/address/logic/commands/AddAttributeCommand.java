@@ -21,7 +21,7 @@ public class AddAttributeCommand extends Command {
     private final Attribute toAdd;
 
     /**
-     * Creates an AddCommand to add the specified {@code Person}
+     * Creates an AddAttributeCommand to add the specified {@code Attribute}
      */
     public AddAttributeCommand(Attribute attribute) {
         requireNonNull(attribute);
