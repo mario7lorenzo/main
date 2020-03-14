@@ -8,9 +8,15 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.hirelah.Question;
 
+
+/**
+ * AddQuestionCommand describes the behavior when the
+ * client wants to add a question to the list.
+ */
+
 public class AddQuestionCommand extends Command {
     public static final String COMMAND_WORD = "question";
-public static final String MESSAGE_DUPLICATE_QUESTION = "The question already exists.";
+    public static final String MESSAGE_DUPLICATE_QUESTION = "The question already exists.";
     public static final String MESSAGE_SUCCESS = "New question added: %1$s";
     public static final String MESSAGE_USAGE = "new " + COMMAND_WORD + ": Adds an question to the Question list. "
             + "Parameters: "
@@ -37,7 +43,7 @@ public static final String MESSAGE_DUPLICATE_QUESTION = "The question already ex
         }
 
         questions.add(question);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ToggleView.QNS);
     }
 
     @Override

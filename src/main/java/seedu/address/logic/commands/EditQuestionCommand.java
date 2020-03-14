@@ -1,12 +1,17 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import javafx.collections.ObservableList;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.hirelah.Question;
 
-import static java.util.Objects.requireNonNull;
+/**
+ * EditQuestionCommand describes the behavior when the
+ * client wants to update a question from the list.
+ */
 
 public class EditQuestionCommand extends Command {
     public static final String COMMAND_WORD = "question";
@@ -14,7 +19,7 @@ public class EditQuestionCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the question identified by its index number in the question list.\n"
             + "Parameters: INDEX UPDATED_DESCRIPTION\n"
-            + "Example: delete " + COMMAND_WORD + " 1";
+            + "Example: update " + COMMAND_WORD + " 1 what the heck is this question?";
 
     public static final String MESSAGE_EDIT_QUESTION_SUCCESS = "Successfully edited question: %s to %s";
     public static final String MESSAGE_EDIT_INDEX_OUT_OF_BOUND = "The index is out of bound: %s";
@@ -42,7 +47,8 @@ public class EditQuestionCommand extends Command {
             Question question = questions.get(index - 1);
             Question updated = new Question(updatedDescription);
             questions.set(index - 1, updated);
-            return new CommandResult(String.format(MESSAGE_EDIT_QUESTION_SUCCESS, questionIndex, updated));
+            return new CommandResult(String.format(MESSAGE_EDIT_QUESTION_SUCCESS, questionIndex, updated),
+                    ToggleView.QNS);
         } catch (NumberFormatException e) {
             throw new CommandException(String.format(MESSAGE_EDIT_INDEX_NOT_A_NUMBER, questionIndex));
         }

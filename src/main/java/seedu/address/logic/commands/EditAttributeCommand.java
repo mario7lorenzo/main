@@ -1,13 +1,17 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import javafx.collections.ObservableList;
 
-import org.w3c.dom.Attr;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.hirelah.Attribute;
 
-import static java.util.Objects.requireNonNull;
+/**
+ * EditAttributeCommand describes the behavior when the
+ * client wants to update an attribute from the list.
+ */
 
 public class EditAttributeCommand extends Command {
     public static final String COMMAND_WORD = "attribute";
@@ -15,7 +19,7 @@ public class EditAttributeCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the attribute identified by its prefix.\n"
             + "Parameters: PREFIX NEW_ATTRIBUTE\n"
-            + "Example: edit " + COMMAND_WORD + " lea tenacity";
+            + "Example: update " + COMMAND_WORD + " lea tenacity";
 
     public static final String MESSAGE_EDIT_ATTRIBUTE_SUCCESS = "Successfully edited Attribute: %1$s to %1$s";
     public static final String MESSAGE_EDIT_DUPLICATE_PREFIX = "There are multiple attributes with prefix: %s";
@@ -37,7 +41,7 @@ public class EditAttributeCommand extends Command {
         Attribute updated = new Attribute(updatedAttribute);
         int index = attributes.indexOf(attribute);
         attributes.set(index, updated);
-        return new CommandResult(String.format(MESSAGE_EDIT_ATTRIBUTE_SUCCESS, attribute, updated));
+        return new CommandResult(String.format(MESSAGE_EDIT_ATTRIBUTE_SUCCESS, attribute, updated), ToggleView.ATT);
     }
 
     @Override

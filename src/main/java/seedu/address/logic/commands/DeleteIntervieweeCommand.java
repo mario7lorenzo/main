@@ -7,10 +7,16 @@ import seedu.address.model.Model;
 import seedu.address.model.hirelah.IntervieweeList;
 import seedu.address.model.hirelah.exceptions.IllegalActionException;
 
+/**
+ * DeleteIntervieweeCommand describes the behavior when the
+ * client wants to delete an interviewee from the list.
+ */
+
 public class DeleteIntervieweeCommand extends Command {
     public static final String COMMAND_WORD = "interviewee";
     public static final String MESSAGE_SUCCESS = "Deleted interviewee with identifier: %1$s";
-    public static final String MESSAGE_USAGE = "delete " + COMMAND_WORD + ": Deletes an interviewee to the Interviewee list. "
+    public static final String MESSAGE_USAGE = "delete " + COMMAND_WORD
+            + ": Deletes an interviewee to the Interviewee list. "
             + "Parameters: "
             + "IDENTIFIER\n"
             + "Example: delete " + COMMAND_WORD + " Doe";
@@ -36,7 +42,7 @@ public class DeleteIntervieweeCommand extends Command {
             throw new CommandException(e.getMessage());
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, identifier));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, identifier), ToggleView.INT);
     }
 
     @Override

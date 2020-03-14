@@ -1,12 +1,17 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import javafx.collections.ObservableList;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.hirelah.Attribute;
 
-import static java.util.Objects.requireNonNull;
+/**
+ * DeleteAttributeCommand describes the behavior when the
+ * client wants to delete an attribute from the list.
+ */
 
 public class DeleteAttributeCommand extends Command {
     public static final String COMMAND_WORD = "attribute";
@@ -32,7 +37,7 @@ public class DeleteAttributeCommand extends Command {
         ObservableList<Attribute> attributes = model.getAttributeList();
         Attribute attribute = find(attributes);
         attributes.remove(attribute);
-        return new CommandResult(String.format(MESSAGE_DELETE_ATTRIBUTE_SUCCESS, attribute));
+        return new CommandResult(String.format(MESSAGE_DELETE_ATTRIBUTE_SUCCESS, attribute), ToggleView.ATT);
     }
 
     @Override

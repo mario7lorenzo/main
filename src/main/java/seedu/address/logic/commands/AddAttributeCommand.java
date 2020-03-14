@@ -8,6 +8,11 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.hirelah.Attribute;
 
+/**
+ * AddAttributeCommand describes the behavior when the
+ * client wants to add an attribute to the list.
+ */
+
 public class AddAttributeCommand extends Command {
     public static final String COMMAND_WORD = "attribute";
     public static final String MESSAGE_DUPLICATE_ATTRIBUTE = "The attribute already exists.";
@@ -37,7 +42,7 @@ public class AddAttributeCommand extends Command {
         }
 
         attributes.add(attribute);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ToggleView.ATT);
     }
 
     @Override

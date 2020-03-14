@@ -2,21 +2,21 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import javafx.collections.ObservableList;
-
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.hirelah.Attribute;
-import seedu.address.model.hirelah.Interviewee;
 import seedu.address.model.hirelah.IntervieweeList;
 import seedu.address.model.hirelah.exceptions.IllegalActionException;
+
+/**
+ * AddIntervieweeCommand describes the behavior when the
+ * client wants to add an interviewee to the list.
+ */
 
 public class AddIntervieweeCommand extends Command {
     public static final String PREFIX_ALIAS = "-a";
 
     public static final String COMMAND_WORD = "interviewee";
-    public static final String MESSAGE_DUPLICATE_IDENTIFIER = "There is already an interviewee with the given identifier.";
     public static final String MESSAGE_SUCCESS = "New interviewee added: %1$s";
     public static final String MESSAGE_USAGE = "new " + COMMAND_WORD + ": Adds an interviewee to the Interviewee list. "
             + "Parameters: "
@@ -57,7 +57,7 @@ public class AddIntervieweeCommand extends Command {
             throw new CommandException(e.getMessage());
         }
 
-        return new CommandResult(String.format(MESSAGE_SUCCESS, fullname));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, fullname), ToggleView.INT);
     }
 
     @Override

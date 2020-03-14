@@ -1,12 +1,17 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import javafx.collections.ObservableList;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.hirelah.Question;
 
-import static java.util.Objects.requireNonNull;
+/**
+ * DeleteQuestionCommand describes the behavior when the
+ * client wants to delete a question from the list.
+ */
 
 public class DeleteQuestionCommand extends Command {
     public static final String COMMAND_WORD = "question";
@@ -39,7 +44,7 @@ public class DeleteQuestionCommand extends Command {
 
             Question question = questions.get(index - 1);
             questions.remove(question);
-            return new CommandResult(String.format(MESSAGE_DELETE_QUESTION_SUCCESS, questionIndex));
+            return new CommandResult(String.format(MESSAGE_DELETE_QUESTION_SUCCESS, questionIndex), ToggleView.QNS);
         } catch (NumberFormatException e) {
             throw new CommandException(String.format(MESSAGE_DELETE_INDEX_NOT_A_NUMBER, questionIndex));
         }

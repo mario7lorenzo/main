@@ -11,7 +11,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.hirelah.*;
+import seedu.address.model.hirelah.Attribute;
+import seedu.address.model.hirelah.Interviewee;
+import seedu.address.model.hirelah.IntervieweeList;
+import seedu.address.model.hirelah.Question;
+import seedu.address.model.hirelah.Transcript;
 import seedu.address.model.person.Person;
 
 /**
@@ -145,7 +149,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public IntervieweeList getIntervieweeList() {return null;}
+    public IntervieweeList getIntervieweeList() {
+        return null;
+    }
 
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
