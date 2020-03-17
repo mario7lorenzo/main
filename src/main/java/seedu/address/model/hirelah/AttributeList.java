@@ -2,7 +2,8 @@ package seedu.address.model.hirelah;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.w3c.dom.Attr;
+
+import java.util.Optional;
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /*
@@ -65,10 +66,18 @@ public class AttributeList {
      */
 
     public Attribute find(String attributePrefix) throws IllegalValueException {
-        checkPrefix(attributePrefix);
-        return attributes.stream().filter(attribute -> attribute.toString().startsWith(attributePrefix))
-                                  .findFirst()
-                                  .get();
+        Optional<Attribute> exactAttribute = attributes.stream().filter(attribute -> attribute.toString()
+                                                                                              .equals(attributePrefix))
+                                                                .findFirst();
+
+        if (exactAttribute.isEmpty()) {
+            checkPrefix(attributePrefix);
+            return attributes.stream().filter(attribute -> attribute.toString().startsWith(attributePrefix))
+                    .findFirst()
+                    .get();
+        } else {
+            return exactAttribute.get();
+        }
     }
 
     /**
