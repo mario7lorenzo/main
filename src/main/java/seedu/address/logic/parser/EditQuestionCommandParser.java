@@ -23,7 +23,7 @@ public class EditQuestionCommandParser {
      * @param arguments the arguments to be parsed
      * @throws ParseException if the user input does not conform the expected format
      */
-    public EditAttributeCommand parse(String arguments) throws ParseException {
+    public EditQuestionCommand parse(String arguments) throws ParseException {
         Matcher matcher = BASIC_EDIT_QUESTION_COMMAND_FORMAT.matcher(arguments.trim());
 
         if (!matcher.matches()) {
@@ -32,6 +32,6 @@ public class EditQuestionCommandParser {
         final String questionNumber = matcher.group("questionNumber");
         final String newQuestion = matcher.group("newQuestion");
 
-        return new EditAttributeCommand(questionNumber.trim(), newQuestion.trim());
+        return new EditQuestionCommand(questionNumber.trim(), newQuestion.trim());
     }
 }
