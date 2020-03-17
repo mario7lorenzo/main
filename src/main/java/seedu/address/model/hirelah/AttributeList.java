@@ -1,9 +1,10 @@
 package seedu.address.model.hirelah;
 
+import java.util.Optional;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Optional;
 import seedu.address.commons.exceptions.IllegalValueException;
 
 /*
