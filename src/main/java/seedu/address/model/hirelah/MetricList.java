@@ -55,8 +55,8 @@ public class MetricList {
 
     public void add(String metricName, AttributeList attributes,
                     List<String> attributePrefixes, List<Double> weightages) throws IllegalValueException {
-        Metric metric = Metric.of(metricName);
-        checkCompleteArgument(attributePrefixes, weightages, attributes);
+        HashMap<Attribute, Double> attributeToScore = checkCompleteArgument(attributePrefixes, weightages, attributes);
+        Metric metric = Metric.of(metricName, attributeToScore);
         boolean isDuplicate = isDuplicate(metric);
 
         if (isDuplicate) {
@@ -64,6 +64,30 @@ public class MetricList {
         }
 
         metrics.add(metric);
+    }
+
+    /**
+     * Edits the name or the weightage of a metric.
+     * @param metricPrefix The prefix of the current metric.
+     * @param updatedName The updated name of the metric.
+     * @param attributes The list of attributes.
+     * @param attributePrefixes The list of attribute prefixes.
+     * @param weightages The list of the weightages that wants to be added.
+     * @throws IllegalValueException If there is a formatting error in the command.
+     */
+
+    public void edit(String metricPrefix, String updatedName, AttributeList attributes,
+                     List<String> attributePrefixes, List<Double> weightages) throws IllegalValueException {
+        Metric metric = find(metricPrefix);
+        Metric updatedMetric = metric.setName(updatedName);
+
+        for (int i = 0; i < attributePrefixes.size(); i++) {
+            Attribute attribute = attributes.find(attributePrefixes.get(i));
+            updatedMetric.setValueToAttribute(attribute, weightages.get(i));
+        }
+
+        int index = metrics.indexOf(metric);
+        metrics.set(index, updatedMetric);
     }
 
     /**
@@ -96,8 +120,7 @@ public class MetricList {
      */
 
     public Metric delete(String metricPrefix) throws IllegalValueException {
-        Metric metric = find(metricPrefix);
-        return metric;
+        return find(metricPrefix);
     }
 
     /**
@@ -118,10 +141,10 @@ public class MetricList {
         }
     }
 
-    private void checkCompleteArgument(List<String> attributePrefixes, List<Double> weightages,
-                                       AttributeList attributes) throws IllegalValueException {
+    private HashMap<Attribute, Double> checkCompleteArgument(List<String> attributePrefixes, List<Double> weightages,
+                                                             AttributeList attributes) throws IllegalValueException {
         HashMap<Attribute, Boolean> checklist = initiateChecklist(attributes);
-
+        HashMap<Attribute, Double> map = new HashMap<>();
         for (String prefix : attributePrefixes) {
             Attribute attribute = attributes.find(prefix);
             checklist.put(attribute, true);
@@ -129,6 +152,12 @@ public class MetricList {
 
         if (isNotCompleteChecklist(checklist) || weightages.size() != attributePrefixes.size()) {
             throw new IllegalValueException(INCOMPLETE_MESSAGE);
+        } else {
+            for (int i = 0; i < attributePrefixes.size(); i++) {
+                Attribute attribute = attributes.find(attributePrefixes.get(i));
+                map.put(attribute, weightages.get(i));
+            }
+            return map;
         }
     }
 

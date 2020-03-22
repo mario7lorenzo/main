@@ -10,6 +10,11 @@ import seedu.address.model.Model;
 import seedu.address.model.hirelah.AttributeList;
 import seedu.address.model.hirelah.MetricList;
 
+/**
+ * AddMetricCommand describes the behavior of HireLah!
+ * when a user wants to delete the metric from the list.
+ */
+
 public class AddMetricCommand extends AddCommand {
     public static final String COMMAND_WORD = "metric";
     public static final String MESSAGE_SUCCESS = "New metric added: %1$s";
