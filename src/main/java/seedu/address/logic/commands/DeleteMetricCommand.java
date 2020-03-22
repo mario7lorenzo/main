@@ -36,7 +36,7 @@ public class DeleteMetricCommand extends DeleteCommand {
         try {
             Metric metric = metrics.delete(metricPrefix);
             return new CommandResult(String.format(MESSAGE_DELETE_METRIC_SUCCESS,
-                    metric), ToggleView.ATTRIBUTE);
+                    metric), ToggleView.METRIC);
         } catch (IllegalValueException e) {
             throw new CommandException(e.getMessage());
         }
