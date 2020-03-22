@@ -95,10 +95,9 @@ public class MetricList {
      * @throws IllegalValueException if the prefix can be multi-interpreted or no such Attribute found.
      */
 
-    public String delete(String metricPrefix) throws IllegalValueException {
+    public Metric delete(String metricPrefix) throws IllegalValueException {
         Metric metric = find(metricPrefix);
-        metrics.remove(metric);
-        return String.format("Successfully removed metric: %s", metric);
+        return metric;
     }
 
     /**
