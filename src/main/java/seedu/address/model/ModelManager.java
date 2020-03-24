@@ -171,7 +171,7 @@ public class ModelManager implements Model {
      */
 
     public void finaliseInterviewProperties() {
-		         this.finalisedInterviewProperties = true;
+        this.finalisedInterviewProperties = true;
     }
 
     /**

@@ -64,7 +64,6 @@ public class MetricList {
             Attribute attribute = attributes.find(attributePrefixes.get(i));
             attributeToScore.put(attribute, weightages.get(i));
         }
-        
         Metric metric = Metric.of(metricName, attributeToScore);
         boolean isDuplicate = isDuplicate(metric);
 
