@@ -32,7 +32,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 public class MetricList {
     private static final String ALREADY_EXISTS_MESSAGE = "This metric is already exists!";
     private static final String DUPLICATE_MESSAGE = "There are multiple metrics with the same prefix.";
-    private static final String INCOMPLETE_MESSAGE = "The argument given is incomplete.";
+    private static final String INCOMPLETE_MESSAGE = "The number of attributes and the number of weights is not equal.";
     private static final String NOT_FOUND_MESSAGE = "No metrics with the entered prefix.";
 
     private ObservableList<Metric> metrics;
@@ -56,7 +56,15 @@ public class MetricList {
 
     public void add(String metricName, AttributeList attributes,
                     List<String> attributePrefixes, List<Double> weightages) throws IllegalValueException {
-        HashMap<Attribute, Double> attributeToScore = checkCompleteArgument(attributePrefixes, weightages, attributes);
+        if (!isEqualSizeMapping(attributePrefixes, weightages)) {
+            throw new IllegalValueException(INCOMPLETE_MESSAGE);
+        }
+        HashMap<Attribute, Double> attributeToScore = new HashMap<>();
+        for (int i = 0; i < attributePrefixes.size(); i++) {
+            Attribute attribute = attributes.find(attributePrefixes.get(i));
+            attributeToScore.put(attribute, weightages.get(i));
+        }
+        
         Metric metric = Metric.of(metricName, attributeToScore);
         boolean isDuplicate = isDuplicate(metric);
 
@@ -142,32 +150,8 @@ public class MetricList {
         }
     }
 
-    /**
-     * Checks whether the user input is complete.
-     * @param attributePrefixes The list of attribute prefixes.
-     * @param weightages The list of weightages.
-     * @param attributes The attribute list.
-     * @return The corresponding attribute to weightage mapping.
-     * @throws IllegalValueException If the argument is not complete.
-     */
-    private HashMap<Attribute, Double> checkCompleteArgument(List<String> attributePrefixes, List<Double> weightages,
-                                                             AttributeList attributes) throws IllegalValueException {
-        HashMap<Attribute, Boolean> checklist = initiateChecklist(attributes);
-        HashMap<Attribute, Double> map = new HashMap<>();
-        for (String prefix : attributePrefixes) {
-            Attribute attribute = attributes.find(prefix);
-            checklist.put(attribute, true);
-        }
-
-        if (isNotCompleteChecklist(checklist) || weightages.size() != attributePrefixes.size()) {
-            throw new IllegalValueException(INCOMPLETE_MESSAGE);
-        } else {
-            for (int i = 0; i < attributePrefixes.size(); i++) {
-                Attribute attribute = attributes.find(attributePrefixes.get(i));
-                map.put(attribute, weightages.get(i));
-            }
-            return map;
-        }
+    private boolean isEqualSizeMapping(List<String> attributePrefixes, List<Double> weightages) {
+        return attributePrefixes.size() == weightages.size();
     }
 
     /**

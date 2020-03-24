@@ -47,7 +47,7 @@ public class AddMetricCommand extends AddCommand {
         if (!model.isfinalisedInterviewProperties()) {
             throw new CommandException(MESSAGE_HAS_NOT_FINALIZED);
         }
-        
+
         MetricList metrics = model.getMetricList();
         AttributeList attributes = model.getAttributeList();
 
