@@ -78,7 +78,7 @@ public class MetricList {
      * Edits the name or the weightage of a metric.
      * @param metricPrefix The prefix of the current metric.
      * @param updatedName The updated name of the metric.
-     * @param attributes The list of attributes that is available in a session.
+     * @param attributes The list of attributes that is available in a sessiong.
      * @param attributePrefixes The list of attribute prefixes.
      * @param weightages The list of the weightages that wants to be added.
      * @throws IllegalValueException If there is a formatting error in the command.
