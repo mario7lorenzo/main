@@ -15,7 +15,8 @@ import seedu.address.model.hirelah.MetricList;
 
 public class DeleteMetricCommand extends DeleteCommand {
     public static final String COMMAND_WORD = "metric";
-
+    public static final String MESSAGE_HAS_NOT_FINALIZED = "The session has not been finalized. Please finalize it"
+            + " before deleting metrics.";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the metric identified by its prefix.\n"
             + "Parameters: PREFIX\n"
@@ -32,6 +33,10 @@ public class DeleteMetricCommand extends DeleteCommand {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        if (!model.isfinalisedInterviewProperties()) {
+            throw new CommandException(MESSAGE_HAS_NOT_FINALIZED);
+        }
+
         MetricList metrics = model.getMetricList();
         try {
             Metric metric = metrics.delete(metricPrefix);
