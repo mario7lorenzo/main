@@ -33,7 +33,7 @@ public class ListCommandParser implements Parser<ListCommand> {
         case ListIntervieweeCommand.COMMAND_WORD:
             return new ListIntervieweeCommand();
 
-            case ListMetricCommand.COMMAND_WORD:
+        case ListMetricCommand.COMMAND_WORD:
             return new ListMetricCommand();
 
         case ListQuestionCommand.COMMAND_WORD:

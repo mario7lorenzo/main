@@ -1,14 +1,15 @@
 package seedu.address.model.hirelah;
 
-import java.util.List;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import seedu.address.commons.exceptions.IllegalValueException;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import seedu.address.commons.exceptions.IllegalValueException;
+
 
 /*
  * MetricList
@@ -141,6 +142,14 @@ public class MetricList {
         }
     }
 
+    /**
+     * Checks whether the user input is complete.
+     * @param attributePrefixes The list of attribute prefixes.
+     * @param weightages The list of weightages.
+     * @param attributes The attribute list.
+     * @return The corresponding attribute to weightage mapping.
+     * @throws IllegalValueException If the argument is not complete.
+     */
     private HashMap<Attribute, Double> checkCompleteArgument(List<String> attributePrefixes, List<Double> weightages,
                                                              AttributeList attributes) throws IllegalValueException {
         HashMap<Attribute, Boolean> checklist = initiateChecklist(attributes);
@@ -161,6 +170,11 @@ public class MetricList {
         }
     }
 
+    /**
+     * Checks whether the checklist is complete or not.
+     * @param checklist The checklist of whether all attributes are listed by the client.
+     * @return The corresponding result.
+     */
     private boolean isNotCompleteChecklist(HashMap<Attribute, Boolean> checklist) {
         boolean result = true;
 
@@ -171,6 +185,11 @@ public class MetricList {
         return !result;
     }
 
+    /**
+     * Builds a checklist from the attribute list.
+     * @param attributes The attribute list.
+     * @return The checklist of whether an attribute's score is stated.
+     */
     private HashMap<Attribute, Boolean> initiateChecklist(AttributeList attributes) {
         ObservableList<Attribute> attributeList = attributes.getObservableList();
         HashMap<Attribute, Boolean> hashMap = new HashMap<>();

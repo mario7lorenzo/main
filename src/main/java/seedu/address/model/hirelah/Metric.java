@@ -1,10 +1,10 @@
 package seedu.address.model.hirelah;
 
-import seedu.address.commons.exceptions.IllegalValueException;
-
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
+
+import seedu.address.commons.exceptions.IllegalValueException;
 
 /*
  * Metric
