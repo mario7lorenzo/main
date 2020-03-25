@@ -24,10 +24,20 @@ public class BestCommand extends Command {
     public static final String MESSAGE_NON_POSITIVE_SIZE = "The size of the interviewees provided must be positive.";
     public static final String MESSAGE_PARAM_NOT_FOUND = "The param prefix provided: %s is not found.";
     public static final String MESSAGE_SUCCESS = "Here are the best %s interviewees based on %s";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds best N candidates from the list.\n"
+            + "Parameters: "
+            + " NUMBER_OF_INTERVIEWEES [-a ATTRIBUTE_PREFIX] [-m METRIC_PREFIX]\n"
+            + "e.g. best 3 -a lea";
 
     private final String numberOfInterviewees;
     private final String paramPrefix;
     private final BestParameter paramType;
+
+    public BestCommand(String numberOfInterviewees, BestParameter paramType) {
+        this.numberOfInterviewees = numberOfInterviewees;
+        this.paramPrefix = "";
+        this.paramType = paramType;
+    }
 
     public BestCommand(String numberOfInterviewees, String paramPrefix, BestParameter paramType) {
         this.numberOfInterviewees = numberOfInterviewees;
@@ -50,7 +60,7 @@ public class BestCommand extends Command {
         } catch (IllegalValueException e) {
             throw new CommandException(String.format(MESSAGE_PARAM_NOT_FOUND, paramPrefix));
         }
-        
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
 
