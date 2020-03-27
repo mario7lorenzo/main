@@ -17,7 +17,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * to parse the command for finding best interviewees.
  */
 
-public class BestParser implements Parser<BestCommand> {
+public class BestCommandParser implements Parser<BestCommand> {
     public static final String MESSAGE_MULTIPLE_PARAMETERS_PROVIDED = "Multiple parameters for comparisons provided.";
 
     /**
