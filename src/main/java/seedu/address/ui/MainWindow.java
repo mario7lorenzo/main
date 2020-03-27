@@ -36,6 +36,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private IntervieweeListPanel intervieweeListPanel;
+    private IntervieweeListPanel bestNIntervieweesPanel;
     private RemarkListPanel remarkListPanel;
     private AttributeListPanel attributeListPanel;
     private QuestionListPanel questionListPanel;
@@ -74,6 +75,7 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
         intervieweeListPanel = new IntervieweeListPanel(logic.getFilteredIntervieweeListView());
+        bestNIntervieweesPanel = new IntervieweeListPanel(logic.getBestNIntervieweesView());
         attributeListPanel = new AttributeListPanel(logic.getAttributeListView());
         questionListPanel = new QuestionListPanel(logic.getQuestionListView());
     }
@@ -177,7 +179,10 @@ public class MainWindow extends UiPart<Stage> {
         case INTERVIEWEE: // interviewee
             listPanelStackPane.getChildren().add(intervieweeListPanel.getRoot());
             break;
-
+            
+        case BEST_INTERVIEWEE:
+            listPanelStackPane.getChildren().add(bestNIntervieweesPanel.getRoot());
+            break;
         default:
             break;
         }

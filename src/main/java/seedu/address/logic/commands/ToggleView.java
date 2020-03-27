@@ -9,5 +9,6 @@ public enum ToggleView {
     QUESTION,
     SESSION,
     TRANSCRIPT,
-    METRIC
+    METRIC,
+    BEST_INTERVIEWEE
 }

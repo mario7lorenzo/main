@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import javafx.collections.ObservableList;
+import seedu.address.model.hirelah.Interviewee;
+
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
@@ -18,6 +21,7 @@ public class CommandResult {
     private final boolean exit;
 
     private final ToggleView toggleView;
+    private final ObservableList<Interviewee> bestNInterviewees;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -27,6 +31,7 @@ public class CommandResult {
         this.showHelp = showHelp;
         this.exit = exit;
         this.toggleView = ToggleView.INTERVIEWEE;
+        this.bestNInterviewees = null;
     }
 
     /**
@@ -37,6 +42,16 @@ public class CommandResult {
         this.showHelp = showHelp;
         this.exit = exit;
         this.toggleView = toggleView;
+        this.bestNInterviewees = null;
+    }
+
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, ToggleView toggleView,
+                         ObservableList<Interviewee> interviewees) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        this.toggleView = toggleView;
+        this.bestNInterviewees = interviewees;
     }
 
     /**
@@ -69,6 +84,10 @@ public class CommandResult {
 
     public ToggleView getToggleView() {
         return toggleView;
+    }
+
+    public ObservableList<Interviewee> getBestNInterviewees() {
+        return bestNInterviewees;
     }
 
     @Override

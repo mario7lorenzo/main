@@ -39,7 +39,7 @@ public interface Logic {
      */
     ObservableList<Transcript> getTranscriptListView(Interviewee interviewee);
 
-
+    ObservableList<Interviewee> getBestNIntervieweesView();
 
     /**
      * Returns the user prefs' sessions directory.

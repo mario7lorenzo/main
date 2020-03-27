@@ -2,7 +2,10 @@ package seedu.address.logic.commands;
 
 import java.util.Comparator;
 
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -52,16 +55,39 @@ public class BestCommand extends Command {
             switch (paramType) {
             case METRIC:
                 comparator = getComparatorByMetric(model.getMetricList(), paramPrefix);
+                break;
             case ATTRIBUTE:
                 comparator = getComparatorByAttribute(model.getAttributeList(), paramPrefix);
+                break;
             default:
                 comparator = getOverallComparator(model.getAttributeList());
             }
+
+            ObservableList<Interviewee> observableInterviewees = model.getIntervieweeList().getObservableList();
+            ObservableList<Interviewee> sortedObservableInterviewees = getBestN(observableInterviewees, comparator,
+                    size);
+            return new CommandResult(MESSAGE_SUCCESS);
+
         } catch (IllegalValueException e) {
             throw new CommandException(String.format(MESSAGE_PARAM_NOT_FOUND, paramPrefix));
         }
+    }
 
-        return new CommandResult(MESSAGE_SUCCESS);
+    private ObservableList<Interviewee> getBestN(ObservableList<Interviewee> observableInterviewees,
+                                                 Comparator<Interviewee> comparator, int size) {
+        SortedList<Interviewee> sorted = new SortedList<>(observableInterviewees, comparator);
+        ObservableList<Interviewee> interviewees = FXCollections.observableArrayList(
+                interviewee -> new Observable[] {
+                        interviewee.fullNameProperty(),
+                        interviewee.aliasProperty(),
+                        interviewee.resumeProperty(),
+                        interviewee.transcriptProperty()
+                });
+
+        for (int i = 0; i < size; i++) {
+            interviewees.add(sorted.get(i));
+        }
+        return interviewees;
     }
 
     /**
