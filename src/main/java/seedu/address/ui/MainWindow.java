@@ -163,11 +163,9 @@ public class MainWindow extends UiPart<Stage> {
         case ATTRIBUTE: // attribute
             listPanelStackPane.getChildren().add(attributeListPanel.getRoot());
             break;
-
         case QUESTION: // questions
             listPanelStackPane.getChildren().add(questionListPanel.getRoot());
             break;
-
         case TRANSCRIPT: // transcript
             remarkListPanel = new RemarkListPanel(null);
             detailedIntervieweeCard = new DetailedIntervieweeCard(new Interviewee("Test name",
@@ -175,11 +173,9 @@ public class MainWindow extends UiPart<Stage> {
             listPanelStackPane.getChildren().addAll(remarkListPanel.getRoot(), detailedIntervieweeCard.getRoot());
             StackPane.setAlignment(detailedIntervieweeCard.getRoot(), Pos.TOP_CENTER);
             break;
-
         case INTERVIEWEE: // interviewee
             listPanelStackPane.getChildren().add(intervieweeListPanel.getRoot());
             break;
-            
         case BEST_INTERVIEWEE:
             listPanelStackPane.getChildren().add(bestNIntervieweesPanel.getRoot());
             break;

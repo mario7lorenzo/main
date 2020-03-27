@@ -48,6 +48,12 @@ public class BestCommand extends Command {
         this.paramType = paramType;
     }
 
+    /**
+     * Executes the best command.
+     * @param model {@code Model} which the command should operate on.
+     * @return The corresponding CommandResult instance.
+     * @throws CommandException If there is an invalid parameter entered by the client.
+     */
     public CommandResult execute(Model model) throws CommandException {
         int size = parseNumberOfInterviewees(numberOfInterviewees);
         Comparator<Interviewee> comparator;
@@ -66,23 +72,29 @@ public class BestCommand extends Command {
             ObservableList<Interviewee> observableInterviewees = model.getIntervieweeList().getObservableList();
             ObservableList<Interviewee> sortedObservableInterviewees = getBestN(observableInterviewees, comparator,
                     size);
-            return new CommandResult(MESSAGE_SUCCESS);
+            return new CommandResult(MESSAGE_SUCCESS, ToggleView.BEST_INTERVIEWEE, sortedObservableInterviewees);
 
         } catch (IllegalValueException e) {
             throw new CommandException(String.format(MESSAGE_PARAM_NOT_FOUND, paramPrefix));
         }
     }
 
+    /**
+     *
+     * @param observableInterviewees
+     * @param comparator
+     * @param size
+     * @return
+     */
     private ObservableList<Interviewee> getBestN(ObservableList<Interviewee> observableInterviewees,
                                                  Comparator<Interviewee> comparator, int size) {
         SortedList<Interviewee> sorted = new SortedList<>(observableInterviewees, comparator);
-        ObservableList<Interviewee> interviewees = FXCollections.observableArrayList(
-                interviewee -> new Observable[] {
-                        interviewee.fullNameProperty(),
-                        interviewee.aliasProperty(),
-                        interviewee.resumeProperty(),
-                        interviewee.transcriptProperty()
-                });
+        ObservableList<Interviewee> interviewees = FXCollections.observableArrayList(interviewee -> new Observable[] {
+                interviewee.fullNameProperty(),
+                interviewee.aliasProperty(),
+                interviewee.resumeProperty(),
+                interviewee.transcriptProperty()
+            });
 
         for (int i = 0; i < size; i++) {
             interviewees.add(sorted.get(i));

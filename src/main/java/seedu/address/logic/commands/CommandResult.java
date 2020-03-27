@@ -1,11 +1,11 @@
 package seedu.address.logic.commands;
 
-import javafx.collections.ObservableList;
-import seedu.address.model.hirelah.Interviewee;
-
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
+
+import javafx.collections.ObservableList;
+import seedu.address.model.hirelah.Interviewee;
 
 /**
  * Represents the result of a command execution.
@@ -68,6 +68,10 @@ public class CommandResult {
      */
     public CommandResult(String feedbackToUser, ToggleView toggleView) {
         this(feedbackToUser, false, false, toggleView);
+    }
+
+    public CommandResult(String feedbackToUser, ToggleView toggleView, ObservableList<Interviewee> interviewees) {
+        this(feedbackToUser, false, false, toggleView, interviewees);
     }
 
     public String getFeedbackToUser() {
