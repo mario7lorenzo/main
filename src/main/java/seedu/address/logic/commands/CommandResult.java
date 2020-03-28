@@ -21,7 +21,6 @@ public class CommandResult {
     private final boolean exit;
 
     private final ToggleView toggleView;
-    private final ObservableList<Interviewee> bestNInterviewees;
 
     /**
      * Constructs a {@code CommandResult} with the specified fields.
@@ -31,7 +30,6 @@ public class CommandResult {
         this.showHelp = showHelp;
         this.exit = exit;
         this.toggleView = ToggleView.INTERVIEWEE;
-        this.bestNInterviewees = null;
     }
 
     /**
@@ -42,16 +40,6 @@ public class CommandResult {
         this.showHelp = showHelp;
         this.exit = exit;
         this.toggleView = toggleView;
-        this.bestNInterviewees = null;
-    }
-
-    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, ToggleView toggleView,
-                         ObservableList<Interviewee> interviewees) {
-        this.feedbackToUser = requireNonNull(feedbackToUser);
-        this.showHelp = showHelp;
-        this.exit = exit;
-        this.toggleView = toggleView;
-        this.bestNInterviewees = interviewees;
     }
 
     /**
@@ -70,10 +58,6 @@ public class CommandResult {
         this(feedbackToUser, false, false, toggleView);
     }
 
-    public CommandResult(String feedbackToUser, ToggleView toggleView, ObservableList<Interviewee> interviewees) {
-        this(feedbackToUser, false, false, toggleView, interviewees);
-    }
-
     public String getFeedbackToUser() {
         return feedbackToUser;
     }
@@ -88,10 +72,6 @@ public class CommandResult {
 
     public ToggleView getToggleView() {
         return toggleView;
-    }
-
-    public ObservableList<Interviewee> getBestNInterviewees() {
-        return bestNInterviewees;
     }
 
     @Override

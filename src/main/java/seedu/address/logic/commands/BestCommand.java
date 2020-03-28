@@ -57,7 +57,7 @@ public class BestCommand extends Command {
      * @throws CommandException If there is an invalid parameter entered by the client.
      */
     public CommandResult execute(Model model) throws CommandException {
-        if (!model.isfinalisedInterviewProperties()) {
+        if (!model.isFinalisedInterviewProperties()) {
             throw new CommandException(MESSAGE_HAS_NOT_FINALIZED);
         }
         int size = parseNumberOfInterviewees(numberOfInterviewees);
@@ -77,6 +77,7 @@ public class BestCommand extends Command {
             ObservableList<Interviewee> observableInterviewees = model.getIntervieweeList().getObservableList();
             ObservableList<Interviewee> sortedObservableInterviewees = getBestN(observableInterviewees, comparator,
                     size);
+            model.setBestNInterviewees(sortedObservableInterviewees);
             return new CommandResult(MESSAGE_SUCCESS, ToggleView.BEST_INTERVIEWEE, sortedObservableInterviewees);
 
         } catch (IllegalValueException e) {

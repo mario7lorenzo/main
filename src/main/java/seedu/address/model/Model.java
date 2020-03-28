@@ -7,8 +7,10 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.hirelah.AppPhase;
 import seedu.address.model.hirelah.Attribute;
 import seedu.address.model.hirelah.AttributeList;
+import seedu.address.model.hirelah.InterviewSession;
 import seedu.address.model.hirelah.Interviewee;
 import seedu.address.model.hirelah.IntervieweeList;
+import seedu.address.model.hirelah.Metric;
 import seedu.address.model.hirelah.MetricList;
 import seedu.address.model.hirelah.Question;
 import seedu.address.model.hirelah.QuestionList;
@@ -61,6 +63,9 @@ public interface Model {
     /** Returns an unmodifiable view of the filtered interviewee list */
     ObservableList<Interviewee> getFilteredIntervieweeListView();
 
+    /** Returns an unmodifiable view of the metric list */
+    ObservableList<Metric> getMetricListView();
+
     /** Returns the list of interviewees for the current interview session */
     IntervieweeList getIntervieweeList();
 
@@ -85,9 +90,27 @@ public interface Model {
     /** Returns the current mode of the App */
     AppPhase getAppPhase();
 
+    /**
+     * Sets the interviewee currently in focus, either when viewing his/her transcript or
+     * when interviewing him/her.
+     */
+    void setCurrentInterviewee(Interviewee interviewee);
+
+    /** Returns the interviewee currently in focus */
+    Interviewee getCurrentInterviewee();
+
+    /** Starts an interview with the given interviewee */
+    void startInterview(Interviewee interviewee);
+
+    /** Gets information about the current Interview Session */
+    InterviewSession getInterviewSession();
+
+    /** Indicates that the interview has ended */
+    void endInterview();
+
     /** Finalizes the interviewees, questions and attributes so they do not change between interviews */
     void finaliseInterviewProperties();
 
     /** Checks whether the interviewees, questions and attributes has been finalised */
-    boolean isfinalisedInterviewProperties();
+    boolean isFinalisedInterviewProperties();
 }
