@@ -5,6 +5,7 @@ import java.util.Comparator;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -94,7 +95,9 @@ public class BestCommand extends Command {
      */
     private ObservableList<Interviewee> getBestN(ObservableList<Interviewee> observableInterviewees,
                                                  Comparator<Interviewee> comparator, int size) {
-        SortedList<Interviewee> sorted = new SortedList<>(observableInterviewees, comparator);
+        FilteredList<Interviewee> filtered = new FilteredList<>(observableInterviewees,
+                x -> x.getTranscript().isPresent());
+        SortedList<Interviewee> sorted = new SortedList<>(filtered, comparator);
         ObservableList<Interviewee> interviewees = FXCollections.observableArrayList(interviewee -> new Observable[] {
                 interviewee.fullNameProperty(),
                 interviewee.aliasProperty(),
