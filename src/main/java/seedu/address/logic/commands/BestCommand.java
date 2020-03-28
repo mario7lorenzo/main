@@ -78,7 +78,7 @@ public class BestCommand extends Command {
             ObservableList<Interviewee> sortedObservableInterviewees = getBestN(observableInterviewees, comparator,
                     size);
             model.setBestNInterviewees(sortedObservableInterviewees);
-            return new CommandResult(MESSAGE_SUCCESS, ToggleView.BEST_INTERVIEWEE, sortedObservableInterviewees);
+            return new CommandResult(MESSAGE_SUCCESS, ToggleView.BEST_INTERVIEWEE);
 
         } catch (IllegalValueException e) {
             throw new CommandException(String.format(MESSAGE_PARAM_NOT_FOUND, paramPrefix));

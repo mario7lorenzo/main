@@ -4,9 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
 
-import javafx.collections.ObservableList;
-import seedu.address.model.hirelah.Interviewee;
-
 /**
  * Represents the result of a command execution.
  */
