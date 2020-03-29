@@ -35,7 +35,7 @@ public class EditQuestionCommandParser {
         }
         try {
             int index = Integer.parseInt(argMultimap.getPreamble());
-            return new EditQuestionCommand(index, argMultimap.getValue(PREFIX_ATTRIBUTE).get());
+            return new EditQuestionCommand(index, argMultimap.getValue(PREFIX_QUESTION).get());
         } catch (NumberFormatException e) {
             throw new ParseException(INDEX_NOT_A_NUMBER);
         }
