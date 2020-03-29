@@ -33,6 +33,7 @@ public class EditAttributeCommandParser implements Parser<EditAttributeCommand> 
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditAttributeCommand.MESSAGE_USAGE));
         }
+        
         return new EditAttributeCommand(
                 argMultimap.getPreamble(),
                 argMultimap.getValue(PREFIX_ATTRIBUTE).get()
