@@ -15,6 +15,7 @@ import seedu.address.model.hirelah.MetricList;
 import seedu.address.model.hirelah.Question;
 import seedu.address.model.hirelah.QuestionList;
 import seedu.address.model.hirelah.Transcript;
+import seedu.address.model.hirelah.exceptions.IllegalActionException;
 
 /**
  * The API of the Model component.
@@ -81,9 +82,6 @@ public interface Model {
     /** Returns the list of best N interviewees based on certain measures */
     ObservableList<Interviewee> getBestNInterviewees();
 
-    /** Sets the list of best N interviewees */
-    void setBestNInterviewees(ObservableList<Interviewee> interviewees);
-
     /** Sets the current mode of the App */
     void setAppPhase(AppPhase phase);
 
@@ -99,8 +97,14 @@ public interface Model {
     /** Returns the interviewee currently in focus */
     Interviewee getCurrentInterviewee();
 
-    /** Starts an interview with the given interviewee */
-    void startInterview(Interviewee interviewee);
+    /** Checks whether there is an interviewee on focus at the current state */
+    boolean hasCurrentInterviewee();
+
+    /** Returns the transcript of the current interviewee */
+    Transcript getCurrentTranscript();
+
+    /** Starts an interview with the given interviewee. Error if the interviewee has been interviewed. */
+    void startInterview(Interviewee interviewee) throws IllegalActionException;
 
     /** Gets information about the current Interview Session */
     InterviewSession getInterviewSession();
@@ -113,4 +117,5 @@ public interface Model {
 
     /** Checks whether the interviewees, questions and attributes has been finalised */
     boolean isFinalisedInterviewProperties();
+
 }

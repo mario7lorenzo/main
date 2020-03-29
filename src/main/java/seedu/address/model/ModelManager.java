@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+
 import seedu.address.model.hirelah.AppPhase;
 import seedu.address.model.hirelah.Attribute;
 import seedu.address.model.hirelah.AttributeList;
@@ -22,6 +23,7 @@ import seedu.address.model.hirelah.MetricList;
 import seedu.address.model.hirelah.Question;
 import seedu.address.model.hirelah.QuestionList;
 import seedu.address.model.hirelah.Transcript;
+import seedu.address.model.hirelah.exceptions.IllegalActionException;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -53,6 +55,7 @@ public class ModelManager implements Model {
         this.questionList = new QuestionList();
         this.metricList = new MetricList();
         this.userPrefs = new UserPrefs(userPrefs);
+        this.bestNIntervieweeList = FXCollections.observableArrayList();
     }
 
     public ModelManager() {
@@ -120,18 +123,31 @@ public class ModelManager implements Model {
         this.currentInterviewee = interviewee;
     }
 
-    /**
-     * Returns the interviewee currently in focus
-     *
-     * @return the current interviewee in focus.
-     */
     @Override
     public Interviewee getCurrentInterviewee() {
         return currentInterviewee;
     }
 
+    /**
+     * Checks whether there is an interviewee currently in focus
+     *
+     * @return boolean whether there is an interviewee in focus.
+     */
     @Override
-    public void startInterview(Interviewee interviewee) {
+    public boolean hasCurrentInterviewee() {
+        return !(this.currentInterviewee == null);
+    }
+
+    @Override
+    public Transcript getCurrentTranscript() {
+        return currentInterviewee.getTranscript().get();
+    }
+
+    @Override
+    public void startInterview(Interviewee interviewee) throws IllegalActionException {
+        if (interviewee.getTranscript().isPresent()) {
+            throw new IllegalActionException("Interviewee has been interviewed already!");
+        }
         setCurrentInterviewee(interviewee);
         currentInterviewee.setTranscript(new Transcript(questionList));
         interviewSession = new InterviewSession();
@@ -206,11 +222,6 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Interviewee> getBestNInterviewees() {
         return bestNIntervieweeList;
-    }
-
-    @Override
-    public void setBestNInterviewees(ObservableList<Interviewee> interviewees) {
-        this.bestNIntervieweeList = interviewees;
     }
 
     /**

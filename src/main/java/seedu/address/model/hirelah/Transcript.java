@@ -5,6 +5,7 @@ import java.time.Duration;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.hirelah.exceptions.IllegalActionException;
 
 /**
@@ -60,8 +61,18 @@ public class Transcript {
      * @param attribute The attribute whose score is to be retrieved.
      * @return The score of the given attribute as recorded in the interview.
      */
-    public double getAttributeScore (Attribute attribute) {
+    public double getAttributeScore(Attribute attribute) {
         return this.attributeToScoreMap.get(attribute);
+    }
+
+    /**
+     * Indicates if an attribute has been scored yet.
+     *
+     * @param attribute the attribute to check.
+     * @return true if attribute has a score, false otherwise.
+     */
+    public boolean isAttributeScored(Attribute attribute) {
+        return this.attributeToScoreMap.containsKey(attribute);
     }
 
     /**
@@ -88,12 +99,12 @@ public class Transcript {
      * Retrieves the index of the Remark when this {@code Question}
      * was first asked.
      *
-     * @param questionNumber Question number that is queried.
+     * @param questionIndex Index of the question that is queried.
      * @return The index of the {@code Remark} in the RemarkList
      *         that was first associated with this {@code Question}.
      */
-    public int getIndexOfQuestion(int questionNumber) throws IllegalActionException {
-        return remarkList.getIndexOfQuestion(questionNumber);
+    public int getIndexOfQuestion(int questionIndex) throws IllegalActionException, IllegalValueException {
+        return remarkList.getIndexOfQuestion(questionIndex);
     }
 
 }
