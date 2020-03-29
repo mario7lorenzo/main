@@ -32,10 +32,15 @@ public class EditIntervieweeCommandParser implements Parser<EditIntervieweeComma
         );
     }
 
+    /**
+     * Checks whether the argument is satisfied or not.
+     * @param argMultimap The argument multimap.
+     * @throws ParseException If the argument is incomplete.
+     */
     private void checkArgument(ArgumentMultimap argMultimap) throws ParseException {
         if (!argMultimap.arePrefixesPresent(PREFIX_NAME) && !argMultimap.arePrefixesPresent(PREFIX_ALIAS)
-                || (argMultimap.getValue(PREFIX_ALIAS).isPresent() && argMultimap.getValue(PREFIX_ALIAS).get().equals(""))
-                || (argMultimap.getValue(PREFIX_NAME).isPresent() && argMultimap.getValue(PREFIX_NAME).get().equals(""))
+            || (argMultimap.getValue(PREFIX_ALIAS).isPresent() && argMultimap.getValue(PREFIX_ALIAS).get().equals(""))
+            || (argMultimap.getValue(PREFIX_NAME).isPresent() && argMultimap.getValue(PREFIX_NAME).get().equals(""))
         ) {
             throw new ParseException(
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditIntervieweeCommand.MESSAGE_USAGE));

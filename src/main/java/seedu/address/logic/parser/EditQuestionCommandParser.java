@@ -1,7 +1,6 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_QUESTION;
 
 import seedu.address.logic.commands.EditQuestionCommand;
@@ -11,8 +10,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new EditQuestionCommand object
  */
 public class EditQuestionCommandParser {
-//    private static final Pattern BASIC_EDIT_QUESTION_COMMAND_FORMAT =
-//            Pattern.compile("(?<questionNumber>\\S+)(?<newQuestion>.+)");
     private static final String INDEX_NOT_A_NUMBER = "The index is not a number.";
 
     /**
