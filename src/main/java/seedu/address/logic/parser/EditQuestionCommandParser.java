@@ -14,6 +14,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class EditQuestionCommandParser {
     private static final Pattern BASIC_EDIT_QUESTION_COMMAND_FORMAT =
             Pattern.compile("(?<questionNumber>\\S+)(?<newQuestion>.+)");
+    private static final String INDEX_NOT_A_NUMBER = "The index is not a number.";
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditQuestionCommand
@@ -31,6 +32,12 @@ public class EditQuestionCommandParser {
         final String questionNumber = matcher.group("questionNumber");
         final String newQuestion = matcher.group("newQuestion");
 
-        return new EditQuestionCommand(questionNumber.trim(), newQuestion.trim());
+        try {
+            int questNum = Integer.parseInt(questionNumber);
+            return new EditQuestionCommand(questNum, newQuestion.trim());
+        } catch (NumberFormatException e) {
+            throw new ParseException(INDEX_NOT_A_NUMBER);
+        }
+
     }
 }
