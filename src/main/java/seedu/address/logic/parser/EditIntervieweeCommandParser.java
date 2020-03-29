@@ -24,19 +24,21 @@ public class EditIntervieweeCommandParser implements Parser<EditIntervieweeComma
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(arguments, PREFIX_ALIAS, PREFIX_NAME);
 
-        if (!argMultimap.arePrefixesPresent(PREFIX_ALIAS, PREFIX_NAME)) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditIntervieweeCommand.MESSAGE_USAGE));
-        }
-        if (argMultimap.getValue(PREFIX_ALIAS).get().equals("") && argMultimap.getValue(PREFIX_NAME).get().equals("")) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditIntervieweeCommand.MESSAGE_USAGE));
-        }
-
+        checkArgument(argMultimap);
         return new EditIntervieweeCommand(
                 argMultimap.getPreamble(),
-                argMultimap.getValue(PREFIX_ALIAS).orElse(""),
-                argMultimap.getValue(PREFIX_NAME).orElse("")
+                argMultimap.getValue(PREFIX_NAME).orElse(""),
+                argMultimap.getValue(PREFIX_ALIAS).orElse("")
         );
+    }
+
+    private void checkArgument(ArgumentMultimap argMultimap) throws ParseException {
+        if (!argMultimap.arePrefixesPresent(PREFIX_NAME) && !argMultimap.arePrefixesPresent(PREFIX_ALIAS)
+                || (argMultimap.getValue(PREFIX_ALIAS).isPresent() && argMultimap.getValue(PREFIX_ALIAS).get().equals(""))
+                || (argMultimap.getValue(PREFIX_NAME).isPresent() && argMultimap.getValue(PREFIX_NAME).get().equals(""))
+        ) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditIntervieweeCommand.MESSAGE_USAGE));
+        }
     }
 }

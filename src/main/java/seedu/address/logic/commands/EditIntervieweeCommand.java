@@ -21,7 +21,7 @@ public class EditIntervieweeCommand extends Command {
             + "Parameters: IDENTIFIER NAME\n"
             + "Example: update " + COMMAND_WORD + " Doe Mario Lorenzo";
 
-    public static final String MESSAGE_EDIT_INTERVIEWEE_SUCCESS = "Successfully edited Interviewee: %1$s to %2$s";
+    public static final String MESSAGE_EDIT_INTERVIEWEE_SUCCESS = "Successfully edited Interviewee: %1$s";
 
     private final String identifier;
     private final String updatedName;
@@ -49,7 +49,7 @@ public class EditIntervieweeCommand extends Command {
         } catch (IllegalActionException | IllegalValueException e) {
             throw new CommandException(e.getMessage());
         }
-        return new CommandResult(String.format(MESSAGE_EDIT_INTERVIEWEE_SUCCESS, identifier, updatedName),
+        return new CommandResult(String.format(MESSAGE_EDIT_INTERVIEWEE_SUCCESS, identifier),
                 ToggleView.INTERVIEWEE);
     }
 
