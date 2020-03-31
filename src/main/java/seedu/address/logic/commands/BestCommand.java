@@ -77,11 +77,13 @@ public class BestCommand extends Command {
         ObservableList<Interviewee> observableInterviewees = model.getFilteredIntervieweeListView();
         ObservableList<Interviewee> bestNInterviewees = model.getBestNInterviewees();
         getBestN(bestNInterviewees, observableInterviewees, comparator, size);
-        return new ToggleCommandResult(MESSAGE_SUCCESS, ToggleView.BEST_INTERVIEWEE);
+        return new ToggleCommandResult(String.format(MESSAGE_SUCCESS, numberOfInterviewees),
+                ToggleView.BEST_INTERVIEWEE);
     }
 
     /**
      * Fills the list of best interviewees with the top N interviewees using the given comparator.
+     * The interviewees shown could be more than N if ties.
      *
      * @param bestNInterviewees the list to fil.
      * @param observableInterviewees the list of interviewees to compare.
@@ -98,6 +100,13 @@ public class BestCommand extends Command {
         int n = Math.min(size, sorted.size());
         for (int i = 0; i < n; i++) {
             bestNInterviewees.add(sorted.get(i));
+        }
+
+        Interviewee lastBest = bestNInterviewees.get(n - 1);
+        while (bestNInterviewees.size() < sorted.size()
+                && comparator.compare(sorted.get(bestNInterviewees.size()), lastBest) == 0) {
+            lastBest = sorted.get(bestNInterviewees.size());
+            bestNInterviewees.add(lastBest);
         }
     }
 
