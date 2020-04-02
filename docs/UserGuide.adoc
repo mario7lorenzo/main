@@ -789,7 +789,7 @@ e.g. `:Agility 10`
 *Decision Phase*
 
 * Open an interviewee report: `open <interviewee>` +
-e.g. `open Jane Doe`
+e.g. `open Jane Doe`a
 * Navigate to answer of interviewee: `q<question number>` +
 e.g. `goto q4`
 * Navigate to a time of interviewee: `at <time>` +
