@@ -14,7 +14,6 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.hirelah.Interviewee;
 import seedu.address.model.hirelah.IntervieweeToScore;
 
 /**
@@ -80,7 +79,7 @@ public class BestIntervieweeListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new IntervieweeCard(score.getInterviewee(), commandExecutor,score.getScore()).getRoot());
+                setGraphic(new IntervieweeCard(score.getInterviewee(), commandExecutor, score.getScore()).getRoot());
             }
         }
     }
