@@ -21,14 +21,16 @@ import seedu.address.model.hirelah.Interviewee;
  */
 public class IntervieweeListPanel extends UiPart<Region> {
     private static final String FXML = "CardListView.fxml";
+
+    @FXML
+    protected Label title;
+
     private final Logger logger = LogsCenter.getLogger(IntervieweeListPanel.class);
     private final CommandExecutor commandExecutor;
 
     @FXML
     private ListView<Interviewee> cardListView;
 
-    @FXML
-    private Label title;
 
     public IntervieweeListPanel(ObservableList<Interviewee> intervieweeList, CommandExecutor commandExecutor) {
         super(FXML);

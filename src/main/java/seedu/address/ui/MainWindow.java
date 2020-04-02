@@ -200,7 +200,8 @@ public class MainWindow extends UiPart<Stage> {
             secondWindow.show(questionListPanel);
             break;
         case BEST_INTERVIEWEE:
-            bestNIntervieweesPanel = new BestIntervieweeListPanel(logic.getBestNIntervieweesView(), this::executeCommand);
+            bestNIntervieweesPanel = new BestIntervieweeListPanel(logic.getBestNIntervieweesView(),
+                    this::executeCommand);
             listPanelStackPane.getChildren().add(bestNIntervieweesPanel.getRoot());
             break;
         default:
