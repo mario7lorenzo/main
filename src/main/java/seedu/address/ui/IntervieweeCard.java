@@ -10,6 +10,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.hirelah.Interviewee;
 
@@ -36,6 +37,8 @@ public class IntervieweeCard extends UiPart<Region> {
     @FXML
     private Label alias;
     @FXML
+    private Label score;
+    @FXML
     private ImageView interviewStatus;
     @FXML
     private ImageView resumeStatus;
@@ -47,6 +50,7 @@ public class IntervieweeCard extends UiPart<Region> {
         name.setText(interviewee.getFullName());
         id.setText("ID:         " + interviewee.getId());
         alias.setText("Alias:     " + interviewee.getAlias().orElse("No alias has been set."));
+        score.setVisible(false);
         if (interviewee.getTranscript().isPresent()) {
             interviewStatus.setImage(new Image(CHECKBOX_TICK.toURI().toString()));
         } else {
@@ -67,6 +71,12 @@ public class IntervieweeCard extends UiPart<Region> {
                 }
             }
         });
+    }
+
+    public IntervieweeCard(Interviewee interviewee, CommandExecutor commandExecutor, double score) {
+        this(interviewee, commandExecutor);
+        this.score.setVisible(true);
+        this.score.setText("Score:     " + score);
     }
 
     private void handleOpen() {
