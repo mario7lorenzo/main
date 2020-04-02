@@ -1,11 +1,14 @@
 package seedu.address.logic.commands.interview;
 
+import java.io.IOException;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.hirelah.Attribute;
+import seedu.address.model.hirelah.storage.Storage;
 
 /**
  * Attempts to find the attribute specified by the user, and update the score of that attribute for
@@ -25,10 +28,7 @@ public class ScoreCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) throws CommandException {
-        if (score <= 0 || score > 10) {
-            throw new CommandException(String.format(MESSAGE_SCORE_OUT_OF_BOUND, score));
-        }
+    public CommandResult execute(Model model, Storage storage) throws CommandException {
         Attribute attribute;
         try {
             attribute = model.getAttributeList().find(attributePrefix);
@@ -36,6 +36,11 @@ public class ScoreCommand extends Command {
             throw new CommandException(e.getMessage());
         }
         model.getCurrentTranscript().setAttributeScore(attribute, this.score);
+        try {
+            storage.saveTranscript(model.getCurrentInterviewee());
+        } catch (IOException e) {
+            throw new CommandException("Error occurred while saving data!");
+        }
         return new CommandResult(String.format(MESSAGE_SUCCESS, this.score, attribute));
     }
 }

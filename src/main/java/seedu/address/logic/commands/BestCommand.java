@@ -16,6 +16,7 @@ import seedu.address.model.hirelah.BestParameter;
 import seedu.address.model.hirelah.Interviewee;
 import seedu.address.model.hirelah.IntervieweeToScore;
 import seedu.address.model.hirelah.MetricList;
+import seedu.address.model.hirelah.storage.Storage;
 
 /**
  * BestCommand describes the behavior of the command
@@ -53,10 +54,11 @@ public class BestCommand extends Command {
      * Executes the best command.
      *
      * @param model {@code Model} which the command should operate on.
+     * @param storage
      * @return The corresponding CommandResult instance.
      * @throws CommandException If there is an invalid parameter entered by the client.
      */
-    public CommandResult execute(Model model) throws CommandException {
+    public CommandResult execute(Model model, Storage storage) throws CommandException {
         validateFinalisation(model, DESIRED_MODEL_FINALIZED_STATE);
         int size = parseNumberOfInterviewees(numberOfInterviewees);
         Comparator<Interviewee> comparator;
@@ -92,8 +94,7 @@ public class BestCommand extends Command {
         ObservableList<Interviewee> observableInterviewees = model.getFilteredIntervieweeListView();
         ObservableList<IntervieweeToScore> bestNInterviewees = model.getBestNInterviewees();
         bestNInterviewees.clear();
-        FilteredList<Interviewee> filtered = new FilteredList<>(observableInterviewees,
-            x -> x.getTranscript().isPresent());
+        FilteredList<Interviewee> filtered = new FilteredList<>(observableInterviewees, Interviewee::isInterviewed);
         SortedList<Interviewee> sorted = new SortedList<>(filtered, comparator);
         int n = Math.min(size, sorted.size());
         for (int i = 0; i < n; i++) {
