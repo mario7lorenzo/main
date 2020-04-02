@@ -30,6 +30,10 @@ public class ScoreCommand extends Command {
     @Override
     public CommandResult execute(Model model, Storage storage) throws CommandException {
         Attribute attribute;
+
+        if (score <= 0 || score > 10) {
+            throw new CommandException(String.format(MESSAGE_SCORE_OUT_OF_BOUND, score));
+        }
         try {
             attribute = model.getAttributeList().find(attributePrefix);
         } catch (IllegalValueException e) {
