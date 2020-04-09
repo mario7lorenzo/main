@@ -56,4 +56,13 @@ public class AddMetricCommand extends Command {
             throw new CommandException(e.getMessage());
         }
     }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof AddMetricCommand // instanceof handles nulls
+                && toAdd.equals(((AddMetricCommand) other).toAdd)
+                && attributePrefixes.equals(((AddMetricCommand) other).attributePrefixes)
+                && addedWeights.equals(((AddMetricCommand) other).addedWeights));
+    }
 }
