@@ -20,6 +20,7 @@ public class CommandTestUtility {
     public static final String VALID_PROPERTY_INTERVIEWEE = "interviewee";
     public static final String VALID_PROPERTY_ATTRIBUTE = "attribute";
     public static final String VALID_PROPERTY_QUESTION = "question";
+    public static final String VALID_PROPERTY_METRIC = "metric";
 
     public static final String VALID_ALIAS_JANE = "Jane";
     public static final String VALID_INTERVIEWEE_JANE = "Jane Doe";
