@@ -1,24 +1,24 @@
-package seedu.address.logic.parser;
+package hirelah.logic.parser;
 
-import static seedu.address.logic.commands.CommandTestUtility.VALID_ATTRIBUTE_PERSISTENCE;
-import static seedu.address.logic.commands.CommandTestUtility.VALID_METRIC_EDITED;
-import static seedu.address.logic.commands.CommandTestUtility.VALID_METRIC_LONG;
-import static seedu.address.logic.commands.CommandTestUtility.VALID_METRIC_SINGLE;
-import static seedu.address.logic.commands.CommandTestUtility.VALID_SCORE_DOUBLE;
-import static seedu.address.logic.commands.CommandTestUtility.VALID_SCORE_INTEGER;
-import static seedu.address.logic.commands.CommandTestUtility.WHITESPACE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static hirelah.logic.commands.CommandTestUtility.VALID_ATTRIBUTE_PERSISTENCE;
+import static hirelah.logic.commands.CommandTestUtility.VALID_METRIC_EDITED;
+import static hirelah.logic.commands.CommandTestUtility.VALID_METRIC_LONG;
+import static hirelah.logic.commands.CommandTestUtility.VALID_METRIC_SINGLE;
+import static hirelah.logic.commands.CommandTestUtility.VALID_SCORE_DOUBLE;
+import static hirelah.logic.commands.CommandTestUtility.VALID_SCORE_INTEGER;
+import static hirelah.logic.commands.CommandTestUtility.WHITESPACE;
+import static hirelah.logic.parser.CliSyntax.PREFIX_ATTRIBUTE;
+import static hirelah.logic.parser.CliSyntax.PREFIX_NAME;
+import static hirelah.logic.parser.CliSyntax.PREFIX_WEIGHTAGE;
+import static hirelah.logic.parser.CommandParserTestUtil.assertParseFailure;
+import static hirelah.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.EditMetricCommand;
+import hirelah.logic.commands.EditMetricCommand;
 
 public class EditMetricCommandParserTest {
     private static final String EMPTY_STRING = "";
