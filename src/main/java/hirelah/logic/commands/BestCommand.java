@@ -31,10 +31,10 @@ public class BestCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Here are the best %s interviewees.";
     public static final String MESSAGE_FORMAT = COMMAND_WORD + "<number of interviewees> "
             + "[-a <attribute>] [-m <metrics>]";
-    public static final String MESSAGE_FUNCTION = ": Finds best N candidates from the list.\n";
+    public static final String MESSAGE_FUNCTION = ": Finds best candidates from the list.\n";
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT
             + MESSAGE_FUNCTION
-            + "e.g. best 3 -a leadership";
+            + "e.g. interviewee -best 3 -a leadership";
 
     private final String numberOfInterviewees;
     private final String paramPrefix;

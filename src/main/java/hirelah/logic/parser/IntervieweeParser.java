@@ -13,7 +13,7 @@ import hirelah.logic.parser.exceptions.ParseException;
 public class IntervieweeParser {
     private static final String EMPTY_STRING = "";
     private static final String TEMPLATE = "%s\n%s";
-    
+
     public Command parse(String arguments) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(arguments, PREFIX_BEST);
 
