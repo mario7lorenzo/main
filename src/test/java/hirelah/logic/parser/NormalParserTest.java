@@ -13,7 +13,6 @@ import static hirelah.logic.commands.CommandTestUtility.VALID_COMMAND_OPEN;
 import static hirelah.logic.commands.CommandTestUtility.VALID_COMMAND_RESUME;
 import static hirelah.logic.commands.CommandTestUtility.VALID_INTERVIEWEE_JANE;
 import static hirelah.logic.commands.CommandTestUtility.VALID_INTERVIEWEE_JANICE;
-import static hirelah.logic.commands.CommandTestUtility.VALID_NUMBER_1;
 import static hirelah.logic.commands.CommandTestUtility.VALID_PLURAL_ATTRIBUTE;
 import static hirelah.logic.commands.CommandTestUtility.VALID_PLURAL_INTERVIEWEE;
 import static hirelah.logic.commands.CommandTestUtility.VALID_PLURAL_METRIC;
