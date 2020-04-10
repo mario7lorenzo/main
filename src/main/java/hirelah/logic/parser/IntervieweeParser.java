@@ -10,10 +10,22 @@ import hirelah.logic.commands.Command;
 import hirelah.logic.commands.ListIntervieweeCommand;
 import hirelah.logic.parser.exceptions.ParseException;
 
-public class IntervieweeParser {
-    private static final String EMPTY_STRING = "";
-    private static final String TEMPLATE = "%s\n%s";
+/**
+ * IntervieweeParser parses the interviewee command
+ * that behaves either list all the interviewees or
+ * show the top interviewees based on certain aspect.
+ */
 
+public class IntervieweeParser implements Parser<Command> {
+    public static final String TEMPLATE = "%s\n%s";
+    private static final String EMPTY_STRING = "";
+
+    /**
+     * Parses the arguments to be passed to the appropriate command.
+     * @param arguments The argument that wants to be parsed.
+     * @return The corresponding command.
+     * @throws ParseException If the command is in invalid format.
+     */
     public Command parse(String arguments) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(arguments, PREFIX_BEST);
 

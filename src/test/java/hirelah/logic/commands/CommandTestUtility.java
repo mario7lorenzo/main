@@ -16,6 +16,7 @@ public class CommandTestUtility {
     public static final String VALID_COMMAND_HELP = "help";
     public static final String VALID_COMMAND_RESUME = "resume";
     public static final String VALID_COMMAND_BEST = "best";
+    public static final String VALID_COMMAND_INTERVIEWEE = "interviewee";
 
     public static final String VALID_PROPERTY_INTERVIEWEE = "interviewee";
     public static final String VALID_PROPERTY_ATTRIBUTE = "attribute";
@@ -29,12 +30,19 @@ public class CommandTestUtility {
     public static final String VALID_ATTRIBUTE_PERSISTENCE = "persistence";
     public static final String VALID_ATTRIBUTE_INTEGRITY = "integrity";
 
+    public static final String VALID_METRIC_SINGLE = "single";
+
     public static final String VALID_QUESTION_WHAT = "What is this question?";
     public static final String VALID_NUMBER_1 = "1";
     public static final String VALID_QUESTION_NUMBER_14 = "q14";
     public static final String VALID_QUESTION_NUMBER_1 = "q1";
     public static final String VALID_TIME_30 = "30.00";
     public static final String VALID_TIME_123 = "123.45";
+
+    public static final int VALID_INTEGER = 5;
+    public static final int VALID_ZERO = 0;
+    public static final int VALID_NEGATIVE = -1;
+    public static final double VALID_DOUBLE = 3.14;
 
     public static final String INVALID_QUESTION_NUMBER_1 = "q14a";
     public static final String INVALID_QUESTION_NUMBER_2 = "qabc";
@@ -43,4 +51,5 @@ public class CommandTestUtility {
     public static final String INVALID_DUMMY_VALUE = "dummy";
 
     public static final String WHITESPACE = " ";
+    public static final String RANDOM_STRING = "This is a very random string";
 }
