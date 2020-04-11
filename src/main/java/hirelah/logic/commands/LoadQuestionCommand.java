@@ -1,27 +1,35 @@
 package hirelah.logic.commands;
 
-import hirelah.commons.exceptions.DataConversionException;
-import hirelah.commons.exceptions.IllegalValueException;
-import hirelah.commons.util.ModelUtil;
-import hirelah.logic.commands.exceptions.CommandException;
-import hirelah.model.Model;
-import javafx.collections.ObservableList;
-import hirelah.storage.Storage;
-import hirelah.model.hirelah.Question;
-import hirelah.model.hirelah.QuestionList;
+import static java.util.Objects.requireNonNull;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 
-import static java.util.Objects.requireNonNull;
+import hirelah.commons.exceptions.DataConversionException;
+import hirelah.commons.exceptions.IllegalValueException;
+import hirelah.commons.util.ModelUtil;
+import hirelah.logic.commands.exceptions.CommandException;
+import hirelah.model.Model;
+import hirelah.model.hirelah.Question;
+import hirelah.model.hirelah.QuestionList;
+import hirelah.storage.Storage;
+
+import javafx.collections.ObservableList;
+
+/**
+ * LoadQuestionCommand describes the behavior of the command
+ * to load questions from other session.
+ */
 
 public class LoadQuestionCommand extends Command {
     public static final String COMMAND_WORD = "question";
     public static final boolean DESIRED_MODEL_FINALIZED_STATE = false;
+    public static final String JSON_FILE = "question.json";
     public static final String MESSAGE_FORMAT = "load " + COMMAND_WORD + " <session>";
     public static final String MESSAGE_FUNCTION = ": Loads the questions from another session\n";
+    public static final String MESSAGE_JSON_NOT_FOUND = "The json file is not found";
     public static final String MESSAGE_SESSION_NOT_EXIST = "The session does not exist";
     public static final String MESSAGE_NOT_ABLE_TO_CONVERT = "The question list is failed to be converted";
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT
@@ -33,7 +41,7 @@ public class LoadQuestionCommand extends Command {
     private final String session;
 
     public LoadQuestionCommand(String session) {
-        this.session = session;
+        this.session = "session" + session;
     }
 
     @Override
@@ -46,7 +54,14 @@ public class LoadQuestionCommand extends Command {
             throw new CommandException(MESSAGE_SESSION_NOT_EXIST);
         }
 
-        Path sessionPath = sessionDir.toPath();
+        File questionFile = new File(sessionDir, JSON_FILE);
+
+        if (!questionFile.exists()) {
+            throw new CommandException(MESSAGE_JSON_NOT_FOUND);
+        }
+
+        Path sessionPath = questionFile.toPath();
+
         try {
             Optional<QuestionList> optionalAttributes = storage.readQuestion(sessionPath);
             ObservableList<Question> attributes = optionalAttributes.orElse(new QuestionList()).getObservableList();
