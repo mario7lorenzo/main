@@ -118,6 +118,13 @@ public class QuestionList {
         return questions.stream().anyMatch(question::equals);
     }
 
+    /**
+     * Clears all the questions from the list.
+     */
+    public void clear() {
+        questions.clear();
+    }
+
     @Override
     public int hashCode() {
         return questions.hashCode();
