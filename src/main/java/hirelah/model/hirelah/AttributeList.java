@@ -119,6 +119,13 @@ public class AttributeList implements Iterable<Attribute> {
 
     }
 
+    /**
+     * Clears all the items inside the list.
+     */
+    public void clear() {
+        attributes.clear();
+    }
+
     public boolean isDuplicate(Attribute attribute) {
         return attributes.contains(attribute);
     }

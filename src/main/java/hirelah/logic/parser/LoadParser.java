@@ -1,6 +1,7 @@
 package hirelah.logic.parser;
 
 import hirelah.logic.commands.Command;
+import hirelah.logic.commands.LoadAttributeCommand;
 import hirelah.logic.parser.exceptions.ParseException;
 
 import java.util.regex.Matcher;
