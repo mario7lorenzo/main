@@ -44,7 +44,6 @@ public class NormalParser {
             put("edit", args -> new EditCommandParser().parse(args));
             put("delete", args -> new DeleteCommandParser().parse(args));
             put("attributes", args -> new ListAttributeCommand());
-            put("interviewees", args -> new ListIntervieweeCommand());
             put("metrics", args -> new ListMetricCommand());
             put("questions", args -> new ListQuestionCommand());
             put("finalise", args -> new FinaliseCommandParser().parse(args));
