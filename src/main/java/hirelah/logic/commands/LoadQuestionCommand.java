@@ -34,7 +34,7 @@ public class LoadQuestionCommand extends Command {
     public static final String MESSAGE_NOT_ABLE_TO_CONVERT = "The question list is failed to be converted";
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT
             + MESSAGE_FUNCTION
-            + "Example: load " + COMMAND_WORD + " sugardaddy";
+            + "Example: load " + COMMAND_WORD + " CEOInterview";
 
     public static final String MESSAGE_LOAD_QUESTION_SUCCESS = "Loaded questions from %s";
 
@@ -63,20 +63,13 @@ public class LoadQuestionCommand extends Command {
         Path sessionPath = questionFile.toPath();
 
         try {
-            Optional<QuestionList> optionalAttributes = storage.readQuestion(sessionPath);
-            ObservableList<Question> attributes = optionalAttributes.orElse(new QuestionList()).getObservableList();
-
+            Optional<QuestionList> optionalQuestions = storage.readQuestion(sessionPath);
             QuestionList currentQuestions = model.getQuestionList();
-            currentQuestions.clear();
-
-            for (Question question : attributes) {
-                currentQuestions.add(question.toString());
-            }
-
+            currentQuestions.setAll(optionalQuestions.orElse(new QuestionList()));
             storage.saveQuestion(currentQuestions);
             return new ToggleCommandResult(String.format(MESSAGE_LOAD_QUESTION_SUCCESS, session), ToggleView.QUESTION);
 
-        } catch (DataConversionException | IllegalValueException | IOException e) {
+        } catch (DataConversionException | IOException e) {
             throw new CommandException(MESSAGE_NOT_ABLE_TO_CONVERT);
         }
     }

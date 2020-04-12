@@ -34,7 +34,7 @@ public class LoadAttributeCommand extends Command {
     public static final String MESSAGE_NOT_ABLE_TO_CONVERT = "The attribute list is failed to be converted";
     public static final String MESSAGE_USAGE = MESSAGE_FORMAT
             + MESSAGE_FUNCTION
-            + "Example: load " + COMMAND_WORD + " sugardaddy";
+            + "Example: load " + COMMAND_WORD + " CEOInterview";
 
     public static final String MESSAGE_LOAD_ATTRIBUTE_SUCCESS = "Loaded attributes from %s";
 
@@ -64,20 +64,13 @@ public class LoadAttributeCommand extends Command {
         Path sessionPath = attributeFile.toPath();
         try {
             Optional<AttributeList> optionalAttributes = storage.readAttribute(sessionPath);
-            ObservableList<Attribute> attributes = optionalAttributes.orElse(new AttributeList()).getObservableList();
-
             AttributeList currentAttributes = model.getAttributeList();
-            currentAttributes.clear();
-
-            for (Attribute attribute : attributes) {
-                currentAttributes.add(attribute.toString());
-            }
-
+            currentAttributes.setAll(optionalAttributes.orElse(new AttributeList()));
             storage.saveAttribute(currentAttributes);
             return new ToggleCommandResult(String.format(MESSAGE_LOAD_ATTRIBUTE_SUCCESS, session),
                     ToggleView.ATTRIBUTE);
 
-        } catch (DataConversionException | IllegalValueException | IOException e) {
+        } catch (DataConversionException | IOException e) {
             throw new CommandException(MESSAGE_NOT_ABLE_TO_CONVERT);
         }
     }

@@ -125,6 +125,10 @@ public class QuestionList {
         questions.clear();
     }
 
+    public void setAll(QuestionList other) {
+        questions.setAll(other.getObservableList());
+    }
+
     @Override
     public int hashCode() {
         return questions.hashCode();

@@ -130,6 +130,10 @@ public class AttributeList implements Iterable<Attribute> {
         return attributes.contains(attribute);
     }
 
+    public void setAll(AttributeList other) {
+        attributes.setAll(other.getObservableList());
+    }
+
     @Override
     public Iterator<Attribute> iterator() {
         return attributes.iterator();
