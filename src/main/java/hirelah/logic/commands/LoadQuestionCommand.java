@@ -8,15 +8,11 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import hirelah.commons.exceptions.DataConversionException;
-import hirelah.commons.exceptions.IllegalValueException;
 import hirelah.commons.util.ModelUtil;
 import hirelah.logic.commands.exceptions.CommandException;
 import hirelah.model.Model;
-import hirelah.model.hirelah.Question;
 import hirelah.model.hirelah.QuestionList;
 import hirelah.storage.Storage;
-
-import javafx.collections.ObservableList;
 
 /**
  * LoadQuestionCommand describes the behavior of the command

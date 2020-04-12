@@ -8,15 +8,12 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import hirelah.commons.exceptions.DataConversionException;
-import hirelah.commons.exceptions.IllegalValueException;
 import hirelah.commons.util.ModelUtil;
 import hirelah.logic.commands.exceptions.CommandException;
 import hirelah.model.Model;
-import hirelah.model.hirelah.Attribute;
 import hirelah.model.hirelah.AttributeList;
 import hirelah.storage.Storage;
 
-import javafx.collections.ObservableList;
 
 /**
  * LoadAttributeCommand describes the behavior of the command
