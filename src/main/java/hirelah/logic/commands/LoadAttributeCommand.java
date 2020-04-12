@@ -41,7 +41,7 @@ public class LoadAttributeCommand extends Command {
     private final String session;
 
     public LoadAttributeCommand(String session) {
-        this.session = "session" + session;
+        this.session = session;
     }
 
     @Override
