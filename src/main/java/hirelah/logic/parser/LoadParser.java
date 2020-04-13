@@ -16,6 +16,7 @@ import hirelah.logic.parser.exceptions.ParseException;
  */
 public class LoadParser implements Parser<Command> {
     public static final String TEMPLATE = "%s\n%s";
+    public static final String MESSAGE_EMPTY_SESSION = "The session's name cannot be left empty";
     private static final String ATTRIBUTE_STRING = "attribute";
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<data>\\S+)(?<name>.*)");
     private static final String QUESTION_STRING = "question";
@@ -36,6 +37,10 @@ public class LoadParser implements Parser<Command> {
 
         final String dataType = matcher.group("data");
         final String sessionName = matcher.group("name");
+
+        if (sessionName.equals("")) {
+            throw new ParseException(MESSAGE_EMPTY_SESSION);
+        }
 
         if (dataType.equals(ATTRIBUTE_STRING)) {
             return new LoadAttributeCommand(sessionName.trim());

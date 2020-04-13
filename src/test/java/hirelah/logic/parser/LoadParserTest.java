@@ -20,11 +20,11 @@ public class LoadParserTest {
     private LoadParser parser = new LoadParser();
 
     @Test
-    public void parse_noArgument_success() {
-        assertParseSuccess(parser, WHITESPACE + VALID_PROPERTY_ATTRIBUTE,
-                new LoadAttributeCommand(EMPTY_STRING));
-        assertParseSuccess(parser, WHITESPACE + VALID_PROPERTY_QUESTION,
-                new LoadQuestionCommand(EMPTY_STRING));
+    public void parse_noArgument_failure() {
+        assertParseFailure(parser, WHITESPACE + VALID_PROPERTY_ATTRIBUTE,
+                LoadParser.MESSAGE_EMPTY_SESSION);
+        assertParseFailure(parser, WHITESPACE + VALID_PROPERTY_QUESTION,
+                LoadParser.MESSAGE_EMPTY_SESSION);
     }
 
     @Test
@@ -40,8 +40,6 @@ public class LoadParserTest {
         String message = String.format(MESSAGE_INVALID_COMMAND_FORMAT, String.format(LoadParser.TEMPLATE,
                 LoadAttributeCommand.MESSAGE_USAGE, LoadQuestionCommand.MESSAGE_USAGE));
 
-        assertParseFailure(parser, WHITESPACE + VALID_PROPERTY_METRIC, message);
-        assertParseFailure(parser, WHITESPACE + VALID_PROPERTY_INTERVIEWEE, message);
         assertParseFailure(parser, WHITESPACE + VALID_PROPERTY_METRIC + WHITESPACE + VALID_SESSION, message);
         assertParseFailure(parser, WHITESPACE + VALID_PROPERTY_INTERVIEWEE + WHITESPACE + VALID_SESSION,
                 message);
