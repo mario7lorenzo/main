@@ -415,6 +415,7 @@ Loaded questions from janitor
 image::Screenshots/Load.png[]
 {empty} +
 // end::load[]
+
 ==== Switching views
 
 When working on the attributes, questions and metrics (more about metrics in <<Metrics>>),
@@ -522,11 +523,10 @@ image::Screenshots/Interview.png[]
 *Example*
 
 ....
-> :resume Jane Doe
+> :resume
 ....
 
-_Action:_ Opens the resume of Jane Doe. It is not necessary to only open Jane Doe's resume during the interview.
-You can also open other interviewees' resume!
+_Action:_ Opens the resume of Jane Doe, if there is any.
 
 _Output:_
 
