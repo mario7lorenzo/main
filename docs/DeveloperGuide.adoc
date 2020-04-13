@@ -1461,4 +1461,3 @@ to show more than 2 interviewees.
 weightage: [one: 0.4, two: 0.3]
 .. Test case: `interviewee -best 2 -m extr` +
 Expected: Charlie and Alice will be shown in the best interviewees list.
-
