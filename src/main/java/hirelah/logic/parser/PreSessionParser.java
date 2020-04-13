@@ -20,7 +20,6 @@ import hirelah.logic.parser.exceptions.ParseException;
  */
 public class PreSessionParser {
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-    private static final String MESSAGE_EMPTY_SESSION = "The session's name cannot be left empty";
     private static final HashMap<String, CommandSupplier> suppliers = new HashMap<>() {
         {
             put("open", args -> new OpenSessionCommand(args.trim()));
@@ -47,9 +46,6 @@ public class PreSessionParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-        if (arguments.equals("")) {
-            throw new ParseException(MESSAGE_EMPTY_SESSION);
-        }
         if (suppliers.containsKey(commandWord)) {
             return suppliers.get(commandWord).getCommand(arguments);
         } else {

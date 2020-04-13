@@ -9,6 +9,7 @@ import hirelah.logic.commands.CommandResult;
 import hirelah.logic.commands.ToggleCommandResult;
 import hirelah.logic.commands.ToggleView;
 import hirelah.logic.commands.exceptions.CommandException;
+import hirelah.logic.parser.exceptions.ParseException;
 import hirelah.model.Model;
 import hirelah.model.hirelah.AppPhase;
 import hirelah.storage.Storage;
@@ -20,6 +21,7 @@ public class OpenSessionCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Opened session: %s";
     public static final String MESSAGE_NO_SUCH_SESSION = "No such session exists!";
     public static final String MESSAGE_FAILED = "Failed to open the session! Some data may have been corrupted";
+    private static final String MESSAGE_EMPTY_SESSION = "The session's name cannot be left empty";
 
     private String sessionName;
 
@@ -29,6 +31,9 @@ public class OpenSessionCommand extends Command {
 
     @Override
     public CommandResult execute(Model model, Storage storage) throws CommandException {
+        if (sessionName.equals("")) {
+            throw new CommandException(MESSAGE_EMPTY_SESSION);
+        }
         File sessionDir = new File(model.getSessionsDirectory().toFile(), sessionName);
         if (!sessionDir.isDirectory()) {
             throw new CommandException(MESSAGE_NO_SUCH_SESSION);
