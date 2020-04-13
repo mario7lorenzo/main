@@ -28,21 +28,21 @@ public class LoadParser implements Parser<Command> {
      */
     public Command parse(String arguments) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(arguments.trim());
+        String message = String.format(MESSAGE_INVALID_COMMAND_FORMAT, String.format(TEMPLATE,
+                LoadAttributeCommand.MESSAGE_USAGE, LoadQuestionCommand.MESSAGE_USAGE));
         if (!matcher.matches()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, String.format(TEMPLATE,
-                    LoadAttributeCommand.MESSAGE_USAGE, LoadQuestionCommand.MESSAGE_USAGE)));
+            throw new ParseException(message);
         }
 
         final String dataType = matcher.group("data");
         final String sessionName = matcher.group("name");
 
         if (dataType.equals(ATTRIBUTE_STRING)) {
-            return new LoadAttributeCommand(sessionName);
+            return new LoadAttributeCommand(sessionName.trim());
         } else if (dataType.equals(QUESTION_STRING)) {
-            return new LoadQuestionCommand(sessionName);
+            return new LoadQuestionCommand(sessionName.trim());
         } else {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, String.format(TEMPLATE,
-                    LoadAttributeCommand.MESSAGE_USAGE, LoadQuestionCommand.MESSAGE_USAGE)));
+            throw new ParseException(message);
         }
     }
 }
