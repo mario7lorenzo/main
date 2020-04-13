@@ -9,7 +9,6 @@ import hirelah.logic.commands.CommandResult;
 import hirelah.logic.commands.ToggleCommandResult;
 import hirelah.logic.commands.ToggleView;
 import hirelah.logic.commands.exceptions.CommandException;
-import hirelah.logic.parser.exceptions.ParseException;
 import hirelah.model.Model;
 import hirelah.model.hirelah.AppPhase;
 import hirelah.storage.Storage;
