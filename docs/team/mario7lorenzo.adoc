@@ -86,7 +86,7 @@ https://github.com/AY1920S2-CS2103-W15-2/main/pull/173[#173])
 *** Refactored and modified existing classes, to satisfy the requirements of the application
 
 ** Documentation:
-*** Cleaned up the User Guide and Developer Guide (Examples: https://github.com/AY1920S2-CS2103-W15-2/main/pull/10[#10],
+*** Cleaned up and rework the User Guide and Developer Guide (Examples: https://github.com/AY1920S2-CS2103-W15-2/main/pull/10[#10],
 https://github.com/AY1920S2-CS2103-W15-2/main/pull/27[27], https://github.com/AY1920S2-CS2103-W15-2/main/pull/84[84])
 
 ** Community:
