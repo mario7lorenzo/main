@@ -11,6 +11,7 @@ participant ":ToggleCommandResult" as ToggleCommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
+participant "<<class>>\n:ModelUtil" as ModelUtil MODEL_COLOR
 participant ":Model" as Model MODEL_COLOR
 end box
 
@@ -59,6 +60,12 @@ deactivate NormalParser
 LogicManager -> BestCommand : execute()
 activate BestCommand
 
+BestCommand -> ModelUtil : validateFinalization()
+activate ModelUtil
+
+ModelUtil --> BestCommand
+deactivate ModelUtil
+
 BestCommand -> BestCommand : getBest()
 activate BestCommand
 
@@ -73,7 +80,7 @@ deactivate BestCommand
 
 create ToggleCommandResult
 BestCommand -> ToggleCommandResult
-activate ToggleCommandResultFi
+activate ToggleCommandResult
 
 ToggleCommandResult --> BestCommand
 deactivate ToggleCommandResult
