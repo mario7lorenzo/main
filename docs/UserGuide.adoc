@@ -393,15 +393,15 @@ to load attributes and questions from other session. Therefore, there is no extr
 *Command*
 
 ....
-load attribute <session>
-load question <session>
+load attributes <session>
+load questions <session>
 ....
 
 *Example*
 
 ....
-> load attribute ceo
-> load question janitor
+> load attributes ceo
+> load questions janitor
 ....
 
 _Output:_
