@@ -1,6 +1,6 @@
 package hirelah.logic.commands.interview;
 
-import java.io.IOException;
+import static hirelah.logic.util.CommandUtil.saveTranscript;
 
 import hirelah.commons.exceptions.IllegalValueException;
 import hirelah.logic.commands.Command;
@@ -17,6 +17,10 @@ import hirelah.storage.Storage;
  */
 public class StartQuestionCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Marked the start of question %d";
+    public static final String MESSAGE_FORMAT = ":start q<question number>";
+    public static final String MESSAGE_USAGE = MESSAGE_FORMAT
+            + ": marks the beginning of a question.\n"
+            + "Example: :start q1";
 
     private final int questionNumber;
 
@@ -33,11 +37,7 @@ public class StartQuestionCommand extends Command {
         } catch (IllegalValueException | IllegalActionException e) {
             throw new CommandException(e.getMessage());
         }
-        try {
-            storage.saveTranscript(model.getCurrentInterviewee());
-        } catch (IOException e) {
-            throw new CommandException("Error while saving data!");
-        }
+        saveTranscript(model, storage);
         return new CommandResult(String.format(MESSAGE_SUCCESS, questionNumber));
     }
 
